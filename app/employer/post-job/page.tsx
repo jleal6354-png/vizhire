@@ -99,11 +99,6 @@ export default function JobsPage() {
 
             <JobDescriptionAI />
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <SkillSuggestionInput label="Required skills" type="required" />
-              <SkillSuggestionInput label="Preferred skills" type="preferred" />
-            </div>
-
             <section id="video-questions" className="scroll-mt-24 overflow-hidden rounded-[2rem] border border-viz-100 bg-white shadow-soft">
               <div className="bg-[radial-gradient(circle_at_20%_0%,rgba(109,59,255,0.16),transparent_34%),linear-gradient(135deg,#ffffff,#fbfaff)] p-5 sm:p-6">
                 <div className="grid gap-6 xl:grid-cols-[1fr_0.78fr] xl:items-end">
@@ -169,6 +164,11 @@ export default function JobsPage() {
                 </div>
               </div>
             </section>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <SkillSuggestionInput label="Required skills" type="required" />
+              <SkillSuggestionInput label="Preferred skills" type="preferred" />
+            </div>
 
             <JobPublishAssist />
           </div>
