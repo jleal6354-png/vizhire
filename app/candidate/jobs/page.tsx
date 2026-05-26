@@ -13,7 +13,7 @@ const interestChips = ["Marketing", "Healthcare", "Remote", "Customer-facing", "
 const quickFilters = ["Recently posted", "Remote-friendly", "Healthcare", "Growth", "Customer-facing", "Adjacent paths"];
 
 const opportunityRows = [
-  { category: "Healthcare", label: "Healthcare growth", note: "Roles close to your current profile interests.", job: jobs[0], signal: "Clear communication, customer insight, and visible growth impact" },
+  { category: "Healthcare", label: "Featured Opportunity", note: "Roles close to your current profile interests.", job: jobs[0], signal: "Clear communication, customer insight, and visible growth impact", promoted: true, promotionTier: "Priority Visibility" },
   { category: "Growth", label: "Growth path", note: "Marketing work with visible business impact.", job: jobs[0], signal: "Lifecycle strategy, customer research, and growth storytelling" },
   { category: "Remote-friendly", label: "Remote-friendly", note: "Flexible teams where presentation and clarity still matter.", job: jobs[0], signal: "Remote team, strong storytelling expectations, healthcare context" },
   { category: "Recently posted", label: "Recently posted", note: "Fresh opportunity with clear expectations.", job: jobs[1], signal: "Hybrid team, data clarity, revenue process ownership" },
@@ -37,13 +37,17 @@ const discoveryLanes = [
 function JobRow({ row }: { row: (typeof opportunityRows)[number] }) {
   const { job } = row;
   const company = job.hideCompanyName ? "Company private" : job.company;
+  const isPromoted = "promoted" in row && row.promoted;
 
   return (
-    <article className="group rounded-2xl border border-viz-100 bg-white p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-viz-200 hover:shadow-glow sm:p-5">
+    <article className={`group rounded-2xl border bg-white p-4 shadow-soft transition hover:-translate-y-0.5 hover:border-viz-200 hover:shadow-glow sm:p-5 ${
+      isPromoted ? "border-viz-300 ring-1 ring-viz-100" : "border-viz-100"
+    }`}>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-viz-50 px-3 py-1 text-xs font-black text-viz-700">{row.label}</span>
+            {isPromoted && <span className="rounded-full bg-gradient-to-r from-viz-700 to-viz-500 px-3 py-1 text-xs font-black text-white">{row.promotionTier}</span>}
             <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-700">Open</span>
             <span className="text-xs font-bold text-slate-400">{job.posted}</span>
           </div>
@@ -90,13 +94,28 @@ function JobRow({ row }: { row: (typeof opportunityRows)[number] }) {
 
 export default function CandidateJobsPage() {
   const [selectedFilter, setSelectedFilter] = useState("Recently posted");
+  const [isSwitching, setIsSwitching] = useState(false);
+  const handleFilterSelect = (filter: string) => {
+    if (filter === selectedFilter) return;
+
+    const currentScroll = window.scrollY;
+    setIsSwitching(true);
+    setSelectedFilter(filter);
+    window.requestAnimationFrame(() => {
+      window.scrollTo(0, currentScroll);
+      window.setTimeout(() => window.scrollTo(0, currentScroll), 0);
+      window.setTimeout(() => window.scrollTo(0, currentScroll), 80);
+      window.setTimeout(() => window.scrollTo(0, currentScroll), 180);
+      window.setTimeout(() => setIsSwitching(false), 220);
+    });
+  };
   const visibleRows = selectedFilter === "Recently posted"
     ? opportunityRows
     : opportunityRows.filter((row) => row.category === selectedFilter);
 
   return (
     <AppShell role="candidate" title="Browse Jobs" subtitle="Find opportunities quickly, then open the roles that feel worth pursuing.">
-      <div className="space-y-5">
+      <div className="space-y-5 [overflow-anchor:none]">
         <section className="overflow-hidden rounded-[2rem] bg-gradient-to-br from-midnight via-viz-900 to-viz-700 p-5 text-white shadow-glow sm:p-7">
           <div className="grid gap-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <div>
@@ -131,9 +150,10 @@ export default function CandidateJobsPage() {
                 <button
                   key={filter}
                   type="button"
-                  onClick={() => setSelectedFilter(filter)}
-                  className={`shrink-0 rounded-full px-4 py-2 text-xs font-black transition ${
-                    selectedFilter === filter ? "bg-viz-700 text-white shadow-glow" : "bg-white text-viz-700 ring-1 ring-viz-100 hover:bg-viz-50"
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => handleFilterSelect(filter)}
+                  className={`shrink-0 rounded-full px-3 py-1.5 text-[11px] font-black transition ${
+                    selectedFilter === filter ? "bg-viz-700 text-white shadow-soft" : "bg-white text-viz-700 ring-1 ring-viz-100 hover:bg-viz-50"
                   }`}
                 >
                   {filter}
@@ -144,7 +164,23 @@ export default function CandidateJobsPage() {
         </section>
 
         <section className="grid gap-4 lg:grid-cols-[1fr_0.34fr]">
-          <div className="space-y-3">
+          <div className={`min-h-[980px] space-y-3 transition-opacity duration-200 ${isSwitching ? "opacity-70" : "opacity-100"}`}>
+            {selectedFilter === "Recently posted" && (
+              <section className="rounded-[2rem] border border-viz-200 bg-[radial-gradient(circle_at_0%_0%,rgba(109,59,255,0.12),transparent_32%),linear-gradient(180deg,#ffffff,#fbfaff)] p-5 shadow-soft">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">Featured opportunities</p>
+                    <h2 className="mt-2 text-2xl font-black text-ink">{jobs[0].title}</h2>
+                    <p className="mt-2 text-sm font-bold leading-6 text-slate-600">
+                      Priority visibility for candidates exploring healthcare growth and remote-friendly roles.
+                    </p>
+                  </div>
+                  <Link href={`/candidate/jobs/${jobs[0].id}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-viz-700 px-5 text-sm font-black text-white shadow-glow">
+                    Review featured role <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </section>
+            )}
             <div className="flex items-end justify-between gap-3 px-1">
               <div>
                 <h2 className="text-2xl font-black text-ink">Recommended to explore</h2>

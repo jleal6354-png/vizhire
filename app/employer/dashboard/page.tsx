@@ -8,6 +8,7 @@ import {
   FileText,
   Play,
   Plus,
+  Rocket,
   Search,
   ShieldCheck,
   Sparkles,
@@ -53,22 +54,32 @@ export default function EmployerDashboardPage() {
             </div>
             <div className="grid grid-cols-3 gap-3 rounded-3xl border border-white/12 bg-white/8 p-4 backdrop-blur">
               {[
-                ["Active jobs", String(activeJobs)],
-                ["New applicants", String(newApplicants)],
-                ["Shortlisted", String(shortlisted)]
-              ].map(([label, value]) => (
-                <div key={label} className="rounded-2xl bg-white/10 p-4">
+                ["Active jobs", String(activeJobs), "/employer/jobs?status=active"],
+                ["New applicants", String(newApplicants), "/employer/applicant-tracking?stage=Applied"],
+                ["Shortlisted", String(shortlisted), "/employer/applicant-tracking?stage=Shortlisted"]
+              ].map(([label, value, href]) => (
+                <Link key={label} href={href} className="rounded-2xl bg-white/10 p-4 transition hover:bg-white/16">
                   <p className="text-3xl font-black">{value}</p>
                   <p className="mt-1 text-xs font-bold text-white/68">{label}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
 
         <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {intelligence.map(([label, value, copy, Icon]) => (
-            <article key={label as string} className="glass rounded-2xl p-5">
+          {intelligence.map(([label, value, copy, Icon]) => {
+            const href =
+              label === "Ready for interview"
+                ? "/employer/applicant-tracking?stage=Interviewing"
+                : label === "References added"
+                  ? "/employer/candidates"
+                  : label === "New intro videos"
+                    ? "/employer/applicant-tracking?stage=Reviewed"
+                    : "/employer/candidates";
+
+            return (
+            <Link key={label as string} href={href} className="glass block rounded-2xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-3xl font-black text-ink">{value as string}</p>
@@ -79,8 +90,8 @@ export default function EmployerDashboardPage() {
                   <Icon className="h-5 w-5" />
                 </span>
               </div>
-            </article>
-          ))}
+            </Link>
+          )})}
         </section>
 
         <section className="grid gap-6 xl:grid-cols-[1fr_0.36fr]">
@@ -171,6 +182,20 @@ export default function EmployerDashboardPage() {
                 <Link href="/employer/candidates" className="inline-flex min-h-12 items-center gap-3 rounded-xl border border-viz-200 bg-white px-4 font-black text-viz-700"><Search className="h-5 w-5" /> Browse Candidates</Link>
                 <Link href="/employer/applicant-tracking" className="inline-flex min-h-12 items-center gap-3 rounded-xl border border-viz-200 bg-white px-4 font-black text-viz-700"><FileText className="h-5 w-5" /> View Pipeline</Link>
               </div>
+            </section>
+
+            <section className="rounded-2xl border border-viz-100 bg-white p-6 shadow-soft">
+              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-viz-50 text-viz-700">
+                <Rocket className="h-5 w-5" />
+              </div>
+              <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-viz-600">Growth tools</p>
+              <h2 className="mt-2 text-xl font-black text-ink">Promote active roles when you need more reach.</h2>
+              <p className="mt-3 text-sm font-bold leading-6 text-slate-600">
+                Boost visibility, unlock premium sourcing, and add recruiter analytics after your hiring activity begins.
+              </p>
+              <Link href="/employer/upgrade" className="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-viz-200 bg-white px-4 text-sm font-black text-viz-700 transition hover:bg-viz-50">
+                View premium options
+              </Link>
             </section>
 
             <section className="glass rounded-2xl p-6">

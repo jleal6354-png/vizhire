@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, Apple, Eye, Lock, Mail, UserRound } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
-
-const employerTalentAreas = ["Healthcare", "Engineering & Technical", "Hospitality", "Customer Service", "Leadership", "Operations", "Sales", "Retail", "Education", "Finance"];
+import { EmployerTalentSelector } from "@/components/employer-talent-selector";
 
 export function AuthScreen({
   type,
@@ -97,8 +96,8 @@ export function AuthScreen({
           </Link>
         </header>
 
-        <section className="grid flex-1 items-stretch gap-7 py-8 lg:grid-cols-[0.45fr_0.55fr] lg:gap-10">
-          <div className="relative h-[300px] overflow-hidden rounded-[2rem] border border-white shadow-soft sm:h-[340px] lg:h-full lg:min-h-0">
+        <section className="grid flex-1 items-center gap-7 py-8 lg:grid-cols-[0.45fr_0.55fr] lg:gap-10">
+          <div className="relative h-[300px] overflow-hidden rounded-[2rem] border border-white shadow-soft sm:h-[340px] lg:h-[min(680px,calc(100vh-9rem))] lg:min-h-[560px]">
             <img src={image} alt={`${role} signup visual`} className={`h-full w-full object-cover ${imagePosition}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/22 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white sm:p-8">
@@ -148,25 +147,7 @@ export function AuthScreen({
                   </label>
                 )}
                 {isSignup && !isCandidate && (
-                  <div className="rounded-2xl border border-viz-100 bg-viz-50/80 p-4">
-                    <p className="text-sm font-black text-ink">What type of talent are you hiring for?</p>
-                    <p className="mt-1 text-xs font-bold leading-5 text-slate-500">
-                      Choose a few areas so VizHire can personalize candidate discovery after signup.
-                    </p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {employerTalentAreas.map((area, index) => (
-                        <button
-                          key={area}
-                          type="button"
-                          className={`rounded-full px-3 py-2 text-xs font-black transition ${
-                            index === 0 || index === 2 ? "bg-viz-700 text-white shadow-glow" : "bg-white text-viz-700 shadow-soft hover:bg-white/80"
-                          }`}
-                        >
-                          {area}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  <EmployerTalentSelector />
                 )}
                 <Link href={submitHref} className="inline-flex min-h-14 w-full items-center justify-center rounded-xl bg-gradient-to-r from-viz-700 to-viz-500 px-5 py-4 font-black text-white shadow-glow transition hover:-translate-y-0.5">
                   {primaryCta}

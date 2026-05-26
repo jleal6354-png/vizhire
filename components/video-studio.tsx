@@ -108,14 +108,65 @@ export function ProfileIntroStudio() {
 export function JobVideoResponseStudio({ questions }: { questions: string[] }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answered, setAnswered] = useState<number[]>([]);
+  const [reviewing, setReviewing] = useState(false);
   const question = questions[currentQuestion] ?? questions[0];
 
   function markAnswered() {
     setAnswered((items) => (items.includes(currentQuestion) ? items : [...items, currentQuestion]));
   }
 
+  function saveAndContinue() {
+    markAnswered();
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      return;
+    }
+    setReviewing(true);
+  }
+
+  if (reviewing) {
+    return (
+      <section id="video-application" className="overflow-hidden rounded-[2rem] border border-viz-100 bg-white p-4 shadow-soft sm:p-6">
+        <div className="rounded-[1.7rem] bg-[radial-gradient(circle_at_50%_0%,rgba(109,59,255,0.18),transparent_34%),linear-gradient(145deg,#ffffff,#fbfaff)] p-5 sm:p-7">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">Review answers</p>
+          <h2 className="mt-3 text-3xl font-black text-ink">Your video answers are ready.</h2>
+          <p className="mt-3 max-w-2xl text-sm font-bold leading-7 text-slate-600">
+            Review anything that needs another take. The final submit moment comes after you review the role and hiring process.
+          </p>
+          <div className="mt-6 grid gap-3">
+            {questions.map((item, index) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => {
+                  setCurrentQuestion(index);
+                  setReviewing(false);
+                }}
+                className="flex items-center justify-between rounded-2xl bg-white px-4 py-3 text-left shadow-soft transition hover:bg-viz-50"
+              >
+                <span>
+                  <span className="block text-xs font-black uppercase tracking-[0.16em] text-viz-600">Question {index + 1}</span>
+                  <span className="mt-1 block text-sm font-black text-ink">{item}</span>
+                </span>
+                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-700">Saved</span>
+              </button>
+            ))}
+          </div>
+          <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto]">
+            <button type="button" onClick={() => setReviewing(false)} className="inline-flex min-h-14 items-center justify-center rounded-2xl border border-viz-200 bg-white px-5 text-sm font-black text-viz-700 transition hover:bg-viz-50">
+              Review one answer
+            </button>
+            <a href="#final-submit" className="inline-flex min-h-14 items-center justify-center rounded-2xl bg-viz-700 px-5 text-sm font-black text-white shadow-glow transition hover:-translate-y-0.5">
+              Continue to final review
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="overflow-hidden rounded-[2rem] border border-viz-100 bg-white p-4 shadow-soft sm:p-6">
+    <section id="video-application" className="overflow-hidden rounded-[2rem] border border-viz-100 bg-white p-4 shadow-soft sm:p-6">
       <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">Video response studio</p>
@@ -173,10 +224,15 @@ export function JobVideoResponseStudio({ questions }: { questions: string[] }) {
         <button type="button" onClick={markAnswered} className="min-h-14 rounded-2xl border border-viz-200 bg-white px-5 text-sm font-black text-viz-700 transition hover:-translate-y-0.5 hover:bg-viz-50">
           Preview Answer
         </button>
-        <button type="button" onClick={() => setCurrentQuestion(Math.min(currentQuestion + 1, questions.length - 1))} className="min-h-14 rounded-2xl border border-viz-200 bg-white px-5 text-sm font-black text-viz-700 transition hover:-translate-y-0.5 hover:bg-viz-50">
-          Next Question
+        <button type="button" onClick={saveAndContinue} className="min-h-14 rounded-2xl border border-viz-200 bg-white px-5 text-sm font-black text-viz-700 transition hover:-translate-y-0.5 hover:bg-viz-50">
+          {currentQuestion === questions.length - 1 ? "Review Answers" : "Save & Next Question"}
         </button>
       </div>
+      {answered.length > 0 && (
+        <button type="button" onClick={() => setReviewing(true)} className="mt-3 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-midnight px-4 text-sm font-black text-white">
+          Review saved video answers
+        </button>
+      )}
     </section>
   );
 }

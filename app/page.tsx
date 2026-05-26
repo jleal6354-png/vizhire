@@ -9,14 +9,20 @@ export default function LandingPage() {
   return (
     <main className="overflow-hidden">
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-viz-100/70 bg-white/86 backdrop-blur-xl">
-        <div className="border-b border-viz-100/70 bg-gradient-to-r from-white via-viz-50/80 to-white px-4 py-2 text-center text-[11px] font-black uppercase tracking-[0.16em] text-viz-700 sm:text-xs">
+        <div className="border-b border-viz-100/70 bg-gradient-to-r from-white via-viz-50/80 to-white px-4 py-2.5 text-center text-[10px] font-black uppercase leading-4 tracking-[0.12em] text-viz-700 sm:text-xs sm:tracking-[0.16em]">
           Understand candidates before the first interview.
         </div>
-        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
-          <BrandLogo />
-          <div className="flex items-center gap-2">
-            <ButtonLink href="/login" variant="secondary">Log In</ButtonLink>
-            <ButtonLink href="/signup">Sign Up Free</ButtonLink>
+        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3.5 sm:gap-4 sm:py-4">
+          <div className="shrink-0">
+            <BrandLogo />
+          </div>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+            <ButtonLink href="/login" variant="secondary" className="min-h-11 min-w-[76px] whitespace-nowrap rounded-lg px-3 text-[13px] sm:min-h-12 sm:min-w-0 sm:rounded-xl sm:px-5 sm:text-sm">
+              Log In
+            </ButtonLink>
+            <ButtonLink href="/signup" className="min-h-11 min-w-[112px] whitespace-nowrap rounded-lg px-3 text-[13px] sm:min-h-12 sm:min-w-0 sm:rounded-xl sm:px-5 sm:text-sm">
+              Sign Up Free
+            </ButtonLink>
           </div>
         </nav>
       </header>

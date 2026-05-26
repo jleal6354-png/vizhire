@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { BriefcaseBusiness, CheckCircle2, Edit3, Eye, Share2, Sparkles } from "lucide-react";
+import { BriefcaseBusiness, CheckCircle2, Edit3, Eye, Sparkles, TrendingUp } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
-import { ApplyButton } from "@/components/apply-button";
 import { ShareActions } from "@/components/share-actions";
 import { applicationActivity, candidates, getCandidateMatch, jobs } from "@/data/demo";
 
@@ -31,15 +30,15 @@ export default function CandidateDashboardPage() {
 
           <div className="grid gap-4 md:grid-cols-3">
             {[
-              ["Profile completion", "92%", CheckCircle2],
-              ["Applications", "3", BriefcaseBusiness],
-              ["Profile views", "128", Eye]
-            ].map(([label, value, Icon]) => (
-              <div key={label as string} className="glass rounded-2xl p-5">
+              ["Profile completion", "92%", "/candidate/edit", CheckCircle2],
+              ["Applications", "3", "/candidate/applications", BriefcaseBusiness],
+              ["Profile views", "128", "/candidate/upgrade", Eye]
+            ].map(([label, value, href, Icon]) => (
+              <Link key={label as string} href={href as string} className="glass block rounded-2xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
                 <Icon className="h-7 w-7 text-viz-600" />
                 <p className="mt-4 text-sm font-bold text-slate-500">{label as string}</p>
                 <p className="mt-1 text-3xl font-black text-ink">{value as string}</p>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -60,23 +59,23 @@ export default function CandidateDashboardPage() {
                   <p key={reason} className="rounded-xl bg-viz-50 px-3 py-2 text-sm font-bold text-viz-700">{reason}</p>
                 ))}
               </div>
-              <div className="mt-5">
-                <ApplyButton jobTitle={jobs[0].title} />
-              </div>
+              <Link href={`/candidate/jobs/${jobs[0].id}`} className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-viz-700 px-4 font-black text-white shadow-glow sm:w-auto">
+                Review role and answer video questions
+              </Link>
             </div>
           </section>
 
           <section className="glass rounded-3xl p-5 sm:p-6">
             <h2 className="text-2xl font-black text-ink">Applications</h2>
             <div className="mt-5 space-y-3">
-              {applicationActivity.map((item) => (
-                <div key={`${item.company}-${item.jobTitle}`} className="flex flex-col justify-between gap-3 rounded-2xl bg-white p-4 shadow-soft sm:flex-row sm:items-center">
+              {applicationActivity.map((item, index) => (
+                <Link href={`/candidate/applications/${jobs[index]?.id ?? jobs[0].id}`} key={`${item.company}-${item.jobTitle}`} className="flex flex-col justify-between gap-3 rounded-2xl bg-white p-4 shadow-soft transition hover:-translate-y-0.5 hover:shadow-glow sm:flex-row sm:items-center">
                   <div>
                     <p className="font-black text-ink">{item.jobTitle}</p>
                     <p className="text-sm text-slate-500">{item.company} · Applied {item.applied}</p>
                   </div>
                   <span className="w-fit rounded-full bg-viz-50 px-3 py-1 text-xs font-black text-viz-700">{item.status}</span>
-                </div>
+                </Link>
               ))}
             </div>
           </section>
@@ -84,6 +83,19 @@ export default function CandidateDashboardPage() {
 
         <aside className="space-y-6">
           <ShareActions title="Maya Johnson on VizHire" url="/profile/maya-johnson" />
+          <div className="rounded-2xl border border-viz-100 bg-white p-6 shadow-soft">
+            <div className="grid h-11 w-11 place-items-center rounded-2xl bg-viz-50 text-viz-700">
+              <TrendingUp className="h-5 w-5" />
+            </div>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-viz-600">Optional boost</p>
+            <h2 className="mt-2 text-xl font-black text-ink">Increase recruiter visibility when you are ready.</h2>
+            <p className="mt-3 text-sm font-bold leading-6 text-slate-600">
+              Featured placement, profile insights, and priority discovery can add momentum. Your profile, applications, and sharing stay free.
+            </p>
+            <Link href="/candidate/upgrade" className="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-viz-200 bg-white px-4 text-sm font-black text-viz-700 transition hover:bg-viz-50">
+              Explore VizHire Boost
+            </Link>
+          </div>
           <div className="glass rounded-2xl p-6">
             <Sparkles className="h-7 w-7 text-viz-600" />
             <h2 className="mt-4 text-xl font-black text-ink">Are you on Viz?</h2>

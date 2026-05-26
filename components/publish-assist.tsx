@@ -75,7 +75,7 @@ export function JobPublishAssist() {
         This is required before preview/publish. {active.reason}
       </p>
       {guidedOnce ? (
-        <Link href="/employer/dashboard" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-viz-700 px-4 py-4 font-black text-white shadow-glow">
+        <Link href="/employer/jobs/published" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-viz-700 px-4 py-4 font-black text-white shadow-glow">
           Continue testing flow <ArrowRight className="h-4 w-4" />
         </Link>
       ) : (

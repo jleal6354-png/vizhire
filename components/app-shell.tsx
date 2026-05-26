@@ -54,16 +54,16 @@ export function AppShell({
   const upgradeCopy =
     role === "candidate"
       ? {
-          title: "Stand out beyond the resume",
-          text: "Create your VizHire profile for free and share it before an opportunity passes.",
-          cta: "Edit Profile",
-          href: "/candidate/edit"
+          title: "Optional visibility boost",
+          text: "Increase recruiter visibility without limiting your free profile, applications, or sharing.",
+          cta: "View Boost",
+          href: "/candidate/upgrade"
         }
       : {
-          title: "Try VizHire free",
-          text: "Post your first job free for 30 days and find candidates beyond the resume.",
-          cta: "Post a Job",
-          href: "/employer/post-job"
+          title: "Premium recruiting tools",
+          text: "Promote active roles, unlock advanced sourcing, and see stronger hiring signals as your pipeline grows.",
+          cta: "Explore Upgrade",
+          href: "/employer/upgrade"
         };
 
   return (

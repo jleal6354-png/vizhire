@@ -14,6 +14,7 @@ import {
   Video
 } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
+import { JobStatusControl } from "@/components/job-status-control";
 import { ShareActions } from "@/components/share-actions";
 import { applicantStages, candidates, getCandidateMatch, jobApplicants, jobs } from "@/data/demo";
 
@@ -120,6 +121,7 @@ export default async function EmployerJobDetailPage({ params }: { params: Promis
         </section>
 
         <aside className="space-y-6">
+          <JobStatusControl initialStatus={job.id === "senior-ux-researcher" ? "Paused" : "Live"} />
           <div className="glass rounded-3xl p-6">
             <h2 className="text-2xl font-black text-ink">Applicant pipeline</h2>
             <div className="mt-5 space-y-3">

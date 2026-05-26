@@ -44,6 +44,7 @@ export default async function CandidateReviewExperiencePage({
     : applicants.filter((item) => (activeStage === "Passed" ? String(item.status) === "Rejected" : item.status === activeStage));
   const visibleApplicants = activeStage === "All" ? applicants : stageApplicants;
   const featured = visibleApplicants[0];
+  const boostedCandidateId = job.id === "growth-marketing-manager" ? "maya-johnson" : visibleApplicants[0]?.candidate.id;
   const match = featured ? getCandidateMatch(featured.candidate, job) : null;
   const upNext = visibleApplicants
     .filter((item) => item.candidate.id !== featured?.candidate.id)
@@ -118,6 +119,11 @@ export default async function CandidateReviewExperiencePage({
             <span className="absolute left-4 top-4 rounded-full bg-black/68 px-4 py-2 text-sm font-black text-emerald-300 backdrop-blur sm:left-5 sm:top-5">
               {match?.score}% Match
             </span>
+            {featured.candidate.id === boostedCandidateId && (
+              <span className="absolute left-4 top-16 rounded-full bg-white/90 px-4 py-2 text-xs font-black text-viz-700 shadow-soft backdrop-blur sm:left-5 sm:top-16">
+                Priority visibility
+              </span>
+            )}
             <span className="absolute right-4 top-4 hidden rounded-full bg-white/14 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white/82 backdrop-blur sm:right-5 sm:top-5 sm:inline-flex">
               Professional intro
             </span>
@@ -203,6 +209,11 @@ export default async function CandidateReviewExperiencePage({
           <div className="glass rounded-3xl p-5">
             <h2 className="text-xl font-black text-ink">Recruiter confidence</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">Human video context paired with resume credibility, work history, and trust signals.</p>
+            {featured.candidate.id === boostedCandidateId && (
+              <p className="mt-3 rounded-2xl bg-viz-50 px-4 py-3 text-sm font-bold leading-6 text-viz-800">
+                This application has priority visibility. Fit, experience, and team judgment still drive the hiring decision.
+              </p>
+            )}
             <div className="mt-4 rounded-2xl bg-viz-50 p-4">
               <p className="inline-flex items-center gap-2 text-sm font-black text-ink"><MessageSquare className="h-4 w-4 text-viz-700" /> First 15 seconds</p>
               <p className="mt-2 text-sm font-bold leading-6 text-slate-700">{featured.candidate.summary}</p>
@@ -214,6 +225,28 @@ export default async function CandidateReviewExperiencePage({
               <button className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-viz-100 bg-white px-4 text-sm font-black text-slate-600"><Download className="h-4 w-4" /> Resume</button>
               <button className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-viz-100 bg-white px-4 text-sm font-black text-slate-600"><Share2 className="h-4 w-4" /> Share Candidate</button>
               <button className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-viz-100 bg-white px-4 text-sm font-black text-slate-600"><Star className="h-4 w-4" /> Save Candidate</button>
+            </div>
+          </div>
+
+          <div className="glass rounded-3xl p-5">
+            <h2 className="inline-flex items-center gap-2 text-xl font-black text-ink"><Video className="h-5 w-5 text-viz-600" /> Job-specific video answers</h2>
+            <p className="mt-2 text-sm font-bold leading-6 text-slate-600">Answers submitted with this application for {job.title}.</p>
+            <div className="mt-4 space-y-3">
+              {job.videoQuestions.slice(0, 3).map((question, index) => (
+                <Link
+                  key={question}
+                  href={`/employer/candidates/${featured.candidate.id}?job=${job.id}`}
+                  className="flex gap-3 rounded-2xl bg-white p-3 shadow-soft transition hover:bg-viz-50"
+                >
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-viz-50 text-viz-700">
+                    <Play className="ml-0.5 h-4 w-4 fill-current" />
+                  </span>
+                  <span>
+                    <span className="block text-xs font-black uppercase tracking-[0.14em] text-viz-600">Answer {index + 1}</span>
+                    <span className="mt-1 block text-sm font-bold leading-5 text-slate-700">{question}</span>
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
 

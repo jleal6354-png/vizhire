@@ -12,7 +12,6 @@ import {
   Share2,
   Sparkles
 } from "lucide-react";
-import { ApplyButton } from "@/components/apply-button";
 import { AppShell } from "@/components/app-shell";
 import { ShareActions } from "@/components/share-actions";
 import { JobVideoResponseStudio } from "@/components/video-studio";
@@ -34,8 +33,6 @@ export default async function CandidateJobDetailPage({ params }: { params: Promi
     "Collaborate with cross-functional teammates and bring thoughtful judgment to decisions.",
     "Use customer, team, or operational insight to improve outcomes with confidence."
   ];
-  const hiringProcess = ["Apply with VizHire profile", "Employer reviews video and experience", "Focused interview conversation"];
-
   return (
     <AppShell role="candidate" title={job.title} subtitle="Review the opportunity, apply, or share it with someone who may be a strong fit.">
       <Link href="/candidate/jobs" className="mb-5 inline-flex items-center gap-2 text-sm font-black text-viz-700">
@@ -51,7 +48,7 @@ export default async function CandidateJobDetailPage({ params }: { params: Promi
               {companyName} · {job.workType} · {job.location}
             </p>
             <p className="mt-5 max-w-3xl leading-8 text-white/74">
-              A modern hiring experience where candidates can show communication, professionalism, trust, and fit beyond the resume.
+              Start with job-specific video answers so the employer can understand how you communicate before reviewing the rest.
             </p>
           </div>
           <div className="rounded-2xl bg-white/10 p-4 text-white backdrop-blur">
@@ -64,6 +61,8 @@ export default async function CandidateJobDetailPage({ params }: { params: Promi
 
       <div className="mt-6 grid gap-6 xl:grid-cols-[0.62fr_0.38fr]">
         <section className="space-y-6">
+          <JobVideoResponseStudio questions={job.videoQuestions} />
+
           <article className="glass rounded-3xl p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
@@ -138,15 +137,13 @@ export default async function CandidateJobDetailPage({ params }: { params: Promi
             </div>
           </article>
 
-          <JobVideoResponseStudio questions={job.videoQuestions} />
-
           <article className="glass rounded-3xl p-6">
             <h2 className="inline-flex items-center gap-2 text-2xl font-black text-ink">
               <Clock3 className="h-6 w-6 text-viz-700" />
               Hiring process
             </h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
-              {hiringProcess.map((step, index) => (
+              {["Apply with VizHire profile", "Employer reviews video and experience", "You'll be notified if the employer wants to continue"].map((step, index) => (
                 <div key={step} className="rounded-2xl bg-white p-4 shadow-soft">
                   <span className="inline-grid h-8 w-8 place-items-center rounded-full bg-viz-50 text-xs font-black text-viz-700">{index + 1}</span>
                   <p className="mt-3 text-sm font-black leading-6 text-ink">{step}</p>
@@ -154,16 +151,36 @@ export default async function CandidateJobDetailPage({ params }: { params: Promi
               ))}
             </div>
           </article>
+
+          <article id="final-submit" className="overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_50%_0%,rgba(109,59,255,0.14),transparent_34%),linear-gradient(180deg,#ffffff,#fbfaff)] p-6 shadow-soft ring-1 ring-viz-100 sm:p-8">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-viz-600">Final review</p>
+            <h2 className="mt-3 text-balance text-4xl font-black leading-tight text-ink">Ready to submit your VizHire application?</h2>
+            <p className="mt-4 max-w-2xl leading-7 text-slate-600">
+              Your profile, intro video, experience, and video answers will be shared with the employer.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {["VizHire profile", "Intro video", "Experience and skills", "Job-specific video answers"].map((item) => (
+                <p key={item} className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-slate-700 shadow-soft">
+                  <CheckCircle2 className="mr-2 inline h-5 w-5 text-emerald-600" /> {item}
+                </p>
+              ))}
+            </div>
+            <Link href={`/candidate/applications/success?job=${job.id}`} className="mt-7 inline-flex min-h-14 w-full items-center justify-center rounded-2xl bg-viz-700 px-5 text-sm font-black text-white shadow-glow transition hover:-translate-y-0.5 sm:w-auto">
+              Submit Application
+            </Link>
+          </article>
         </section>
 
         <aside className="space-y-6 xl:sticky xl:top-28">
           <div className="glass rounded-3xl p-5">
             <h2 className="text-xl font-black text-ink">Apply with your VizHire profile</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              Send your profile, video intro, work history, skills, references, and recommendations in one polished application.
+              Record and review your video answers first. Then submit your profile and answers together.
             </p>
             <div className="mt-5">
-              <ApplyButton jobTitle={job.title} />
+              <a href="#video-application" className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-viz-700 px-4 font-black text-white shadow-glow">
+                Start video answers
+              </a>
             </div>
           </div>
 
