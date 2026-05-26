@@ -19,23 +19,27 @@ export function ProfileIntroStudio() {
   const [state, setState] = useState<"prepare" | "countdown" | "recording" | "review">("prepare");
 
   return (
-    <div className="overflow-hidden rounded-[2rem] border border-viz-100 bg-white text-ink shadow-soft">
-      <div className="p-4 sm:p-6">
-        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div className="overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_50%_0%,rgba(109,59,255,0.34),transparent_36%),linear-gradient(145deg,#070b24,#170835_52%,#050713)] p-4 text-white shadow-glow sm:p-6">
+      <div>
+        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-viz-600">
-              <Video className="h-4 w-4" /> Intro studio
+            <p className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-viz-200">
+              <Video className="h-4 w-4" /> Professional introduction studio
             </p>
-            <h3 className="mt-2 text-3xl font-black leading-tight text-ink sm:text-4xl">
-              Create a first 10 seconds employers remember.
+            <h3 className="mt-2 max-w-3xl text-4xl font-black leading-tight sm:text-5xl">
+              Introduce yourself professionally.
             </h3>
+            <p className="mt-3 max-w-2xl text-sm font-bold leading-7 text-white/68 sm:text-base">
+              This is how employers begin understanding who you are beyond your resume.
+            </p>
           </div>
-          <span className="w-fit rounded-full bg-viz-50 px-4 py-2 text-xs font-black text-viz-700">30 sec intro</span>
+          <span className="w-fit rounded-full bg-white/10 px-4 py-2 text-xs font-black text-viz-100 backdrop-blur">30 sec intro</span>
         </div>
 
-        <div className="relative overflow-hidden rounded-[1.7rem] bg-midnight shadow-glow">
+        <div className="relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-midnight shadow-glow">
           <div className="aspect-[4/5] sm:aspect-video">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,rgba(255,255,255,0.22),transparent_20%),linear-gradient(145deg,#080d28,#351285_52%,#12072c)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_24%,rgba(255,255,255,0.24),transparent_19%),linear-gradient(145deg,#050713,#2b126d_52%,#090316)]" />
+            <div className="absolute inset-8 rounded-[2rem] border border-white/10 shadow-[0_0_80px_rgba(109,59,255,0.28)_inset]" />
             <div className="absolute inset-x-5 top-5 flex items-center justify-between">
               <span className="rounded-full bg-white/12 px-3 py-1 text-xs font-black text-white/80 backdrop-blur">Camera preview</span>
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-400/16 px-3 py-1 text-xs font-black text-emerald-200">
@@ -59,8 +63,8 @@ export function ProfileIntroStudio() {
                 {state === "recording" && "Recording your intro."}
                 {state === "review" && "Preview. Retry if it does not feel like you."}
               </p>
-              <h4 className="mt-2 max-w-2xl text-2xl font-black sm:text-4xl">
-                This is your moment to help employers understand you.
+              <h4 className="mt-2 max-w-2xl text-2xl font-black sm:text-3xl">
+                Help employers understand how you communicate and think.
               </h4>
               <div className="mt-4 flex flex-wrap gap-2">
                 {coachingNotes.map((note) => (
@@ -76,11 +80,11 @@ export function ProfileIntroStudio() {
           </div>
         </div>
 
-        <details className="mt-4 rounded-2xl bg-viz-50 px-4 py-3 text-sm text-slate-700">
-          <summary className="cursor-pointer font-black text-ink">Need a starting line?</summary>
+        <details className="mt-4 rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-sm text-white/76 backdrop-blur">
+          <summary className="cursor-pointer font-black text-white">Need a starting line?</summary>
           <div className="mt-3 grid gap-2">
             {exampleOpenings.map((opening) => (
-              <p key={opening} className="rounded-xl bg-white px-3 py-2 font-bold leading-6 shadow-soft">{opening}</p>
+              <p key={opening} className="rounded-xl bg-white/10 px-3 py-2 font-bold leading-6 text-white/86">{opening}</p>
             ))}
           </div>
         </details>
@@ -89,10 +93,10 @@ export function ProfileIntroStudio() {
           <button type="button" onClick={() => setState("countdown")} className="min-h-14 rounded-2xl bg-viz-700 px-5 text-sm font-black text-white shadow-glow transition hover:-translate-y-0.5">
             Record My Professional Intro
           </button>
-          <button type="button" onClick={() => setState("review")} className="min-h-14 rounded-2xl border border-viz-200 bg-white px-5 text-sm font-black text-viz-700 transition hover:-translate-y-0.5 hover:bg-viz-50">
+          <button type="button" onClick={() => setState("review")} className="min-h-14 rounded-2xl border border-white/14 bg-white/10 px-5 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-white/16">
             Preview Intro
           </button>
-          <button type="button" onClick={() => setState("prepare")} className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-viz-200 bg-white px-5 text-sm font-black text-viz-700 transition hover:-translate-y-0.5 hover:bg-viz-50">
+          <button type="button" onClick={() => setState("prepare")} className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/14 bg-white/10 px-5 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-white/16">
             <RefreshCw className="h-4 w-4" /> Record Again
           </button>
         </div>

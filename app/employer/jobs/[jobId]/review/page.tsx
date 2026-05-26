@@ -22,22 +22,43 @@ export function generateStaticParams() {
   return jobs.map((job) => ({ jobId: job.id }));
 }
 
-export default async function CandidateReviewExperiencePage({ params }: { params: Promise<{ jobId: string }> }) {
+const reviewStages = ["All", "Reviewed", "Shortlisted", "Interviewing", "Passed"] as const;
+
+export default async function CandidateReviewExperiencePage({
+  params,
+  searchParams
+}: {
+  params: Promise<{ jobId: string }>;
+  searchParams?: Promise<{ stage?: string }>;
+}) {
   const { jobId } = await params;
+  const { stage } = (await searchParams) ?? {};
   const job = jobs.find((item) => item.id === jobId) ?? jobs[0];
   const applicants = (jobApplicants[job.id as keyof typeof jobApplicants] ?? []).map((application) => ({
     ...application,
     candidate: candidates.find((candidate) => candidate.id === application.candidateId) ?? candidates[0]
   }));
-  const featured = applicants[0] ?? { candidate: candidates[0], status: "Applied" };
-  const match = getCandidateMatch(featured.candidate, job);
-  const upNext = candidates
-    .filter((candidate) => candidate.id !== featured.candidate.id)
+  const activeStage = reviewStages.find((item) => item === stage) ?? "All";
+  const stageApplicants = activeStage === "All"
+    ? applicants
+    : applicants.filter((item) => (activeStage === "Passed" ? String(item.status) === "Rejected" : item.status === activeStage));
+  const visibleApplicants = activeStage === "All" ? applicants : stageApplicants;
+  const featured = visibleApplicants[0];
+  const match = featured ? getCandidateMatch(featured.candidate, job) : null;
+  const upNext = visibleApplicants
+    .filter((item) => item.candidate.id !== featured?.candidate.id)
     .slice(0, 5)
-    .map((candidate) => ({
-      candidate,
-      status: applicants.find((item) => item.candidate.id === candidate.id)?.status ?? "Suggested"
+    .map((item) => ({
+      candidate: item.candidate,
+      status: item.status
     }));
+  const stats = [
+    { label: "Total Applicants", value: applicants.length || job.applicants, stage: "All" },
+    { label: "Reviewed", value: applicants.filter((item) => item.status === "Reviewed").length, stage: "Reviewed" },
+    { label: "Shortlisted", value: applicants.filter((item) => item.status === "Shortlisted").length, stage: "Shortlisted" },
+    { label: "Interviewing", value: applicants.filter((item) => item.status === "Interviewing").length, stage: "Interviewing" },
+    { label: "Passed", value: applicants.filter((item) => String(item.status) === "Rejected").length, stage: "Passed" }
+  ];
 
   return (
     <AppShell title="Candidate Review" subtitle="Understand real candidates for this job.">
@@ -56,6 +77,37 @@ export default async function CandidateReviewExperiencePage({ params }: { params
         </Link>
       </section>
 
+      <section className="mb-5 grid gap-2 sm:grid-cols-5">
+        {stats.map((stat) => {
+          const selected = activeStage === stat.stage;
+          return (
+            <Link
+              key={stat.label}
+              href={stat.stage === "All" ? `/employer/jobs/${job.id}/review` : `/employer/jobs/${job.id}/review?stage=${stat.stage}`}
+              className={`rounded-2xl px-4 py-3 transition hover:-translate-y-0.5 ${
+                selected ? "bg-viz-700 text-white shadow-glow" : "border border-viz-100 bg-white text-ink shadow-soft hover:bg-viz-50"
+              }`}
+            >
+              <p className={`text-2xl font-black ${selected ? "text-white" : "text-ink"}`}>{stat.value}</p>
+              <p className={`mt-1 text-xs font-black uppercase tracking-[0.14em] ${selected ? "text-viz-100" : "text-slate-500"}`}>{stat.label}</p>
+            </Link>
+          );
+        })}
+      </section>
+
+      {!featured ? (
+        <section className="rounded-[2rem] border border-viz-100 bg-white p-8 text-center shadow-soft">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-viz-600">{activeStage}</p>
+          <h2 className="mt-3 text-3xl font-black text-ink">No candidates in this stage yet.</h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm font-bold leading-6 text-slate-600">
+            Choose another stage to continue reviewing applicants for this job.
+          </p>
+          <Link href={`/employer/jobs/${job.id}/review`} className="mt-6 inline-flex min-h-12 items-center justify-center rounded-xl bg-viz-700 px-5 text-sm font-black text-white shadow-glow">
+            Back to all applicants
+          </Link>
+        </section>
+      ) : (
+      <>
       <section className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
         <div className="space-y-4">
           <article className="overflow-hidden rounded-3xl bg-midnight text-white shadow-glow">
@@ -64,7 +116,7 @@ export default async function CandidateReviewExperiencePage({ params }: { params
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/82 via-black/28 to-transparent" />
             <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black/28 to-transparent" />
             <span className="absolute left-4 top-4 rounded-full bg-black/68 px-4 py-2 text-sm font-black text-emerald-300 backdrop-blur sm:left-5 sm:top-5">
-              {match.score}% Match
+              {match?.score}% Match
             </span>
             <span className="absolute right-4 top-4 hidden rounded-full bg-white/14 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white/82 backdrop-blur sm:right-5 sm:top-5 sm:inline-flex">
               Professional intro
@@ -82,6 +134,9 @@ export default async function CandidateReviewExperiencePage({ params }: { params
                     <span>{featured.candidate.location}</span>
                   </div>
                   <p className="mt-4 max-w-2xl text-sm leading-6 text-white/78">{featured.candidate.summary}</p>
+                  <p className="mt-3 max-w-2xl text-xs font-black uppercase tracking-[0.16em] text-viz-100">
+                    First impression for this role · {featured.status}
+                  </p>
                   <div className="mt-4 hidden flex-wrap items-center gap-2 sm:flex">
                     {featured.candidate.topSkills.slice(0, 3).map((skill) => (
                       <span key={skill} className="rounded-full bg-white/12 px-3 py-1 text-[11px] font-black text-white backdrop-blur">{skill}</span>
@@ -186,7 +241,7 @@ export default async function CandidateReviewExperiencePage({ params }: { params
           <div className="glass rounded-3xl p-5">
             <h2 className="inline-flex items-center gap-2 text-xl font-black text-ink"><FileText className="h-5 w-5 text-viz-600" /> Match reasons</h2>
             <div className="mt-4 space-y-2">
-              {[...match.reasons, "Video intro completed", "References available"].slice(0, 5).map((reason) => (
+              {[...(match?.reasons ?? []), "Video intro completed", "References available"].slice(0, 5).map((reason) => (
                 <p key={reason} className="rounded-2xl bg-white px-4 py-3 text-sm font-bold text-slate-700 shadow-soft">{reason}</p>
               ))}
             </div>
@@ -204,6 +259,8 @@ export default async function CandidateReviewExperiencePage({ params }: { params
         <button className="min-h-12 rounded-xl bg-viz-50 px-3 text-xs font-black text-viz-700">Next</button>
         <button className="min-h-12 rounded-xl border border-red-100 bg-red-50 px-3 text-xs font-black text-red-600">Pass</button>
       </div>
+      </>
+      )}
     </AppShell>
   );
 }
