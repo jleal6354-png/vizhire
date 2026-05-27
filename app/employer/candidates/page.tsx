@@ -19,7 +19,7 @@ const marketplaceByIndustry = {
         name: "Amara Lewis",
         title: "Nurse Manager",
         location: "Phoenix, AZ",
-        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Calm patient communication",
         references: 5,
         skills: ["Patient Care", "Team Leadership"]
@@ -29,7 +29,7 @@ const marketplaceByIndustry = {
         name: "Priya Nair",
         title: "Clinic Coordinator",
         location: "Austin, TX",
-        image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Front-desk trust builder",
         references: 4,
         skills: ["Scheduling", "Patient Experience"]
@@ -39,7 +39,7 @@ const marketplaceByIndustry = {
         name: "Marcus Reed",
         title: "Medical Assistant",
         location: "Atlanta, GA",
-        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Warm clinical presence",
         references: 3,
         skills: ["Vitals", "Care Support"]
@@ -49,7 +49,7 @@ const marketplaceByIndustry = {
         name: "Elena Torres",
         title: "Patient Services Lead",
         location: "San Diego, CA",
-        image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Clear under pressure",
         references: 6,
         skills: ["Intake", "Service Recovery"]
@@ -59,7 +59,7 @@ const marketplaceByIndustry = {
         name: "Jordan Kim",
         title: "Clinic Operations Lead",
         location: "Remote",
-        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Organized care operations",
         references: 4,
         skills: ["Operations", "Compliance"]
@@ -75,7 +75,7 @@ const marketplaceByIndustry = {
         name: "Jordan Price",
         title: "Software Engineer",
         location: "Seattle, WA",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Explains systems clearly",
         references: 3,
         skills: ["React", "APIs"]
@@ -85,7 +85,7 @@ const marketplaceByIndustry = {
         name: "Nia Brooks",
         title: "Technical Lead",
         location: "Remote",
-        image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Strong tradeoff clarity",
         references: 5,
         skills: ["Architecture", "Mentoring"]
@@ -95,7 +95,7 @@ const marketplaceByIndustry = {
         name: "Leo Chen",
         title: "Data Analyst",
         location: "Chicago, IL",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Calm data storytelling",
         references: 4,
         skills: ["SQL", "Dashboards"]
@@ -105,7 +105,7 @@ const marketplaceByIndustry = {
         name: "Avery Patel",
         title: "IT Specialist",
         location: "Dallas, TX",
-        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Patient support style",
         references: 2,
         skills: ["Systems", "Support"]
@@ -115,7 +115,7 @@ const marketplaceByIndustry = {
         name: "Sam Rivera",
         title: "Solutions Architect",
         location: "Denver, CO",
-        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Client-ready communicator",
         references: 5,
         skills: ["Cloud", "Discovery"]
@@ -131,7 +131,7 @@ const marketplaceByIndustry = {
         name: "Mina Flores",
         title: "Restaurant Manager",
         location: "Miami, FL",
-        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Warm team leadership",
         references: 4,
         skills: ["Service", "Training"]
@@ -141,7 +141,7 @@ const marketplaceByIndustry = {
         name: "Chris Morgan",
         title: "Front Desk Supervisor",
         location: "Las Vegas, NV",
-        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Guest-first presence",
         references: 3,
         skills: ["Guest Care", "Scheduling"]
@@ -151,7 +151,7 @@ const marketplaceByIndustry = {
         name: "Talia Brooks",
         title: "Guest Experience Lead",
         location: "Orlando, FL",
-        image: "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "High-energy service presence",
         references: 4,
         skills: ["Guest Recovery", "Team Energy"]
@@ -161,7 +161,7 @@ const marketplaceByIndustry = {
         name: "Noah Singh",
         title: "Hotel Operations Lead",
         location: "New York, NY",
-        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Polished guest communication",
         references: 5,
         skills: ["Operations", "Hospitality"]
@@ -171,7 +171,7 @@ const marketplaceByIndustry = {
         name: "Ari Coleman",
         title: "Event Services Manager",
         location: "Chicago, IL",
-        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Calm under pressure",
         references: 3,
         skills: ["Events", "Service"]
@@ -197,7 +197,7 @@ const marketplaceByIndustry = {
         name: "Renee Carter",
         title: "Client Support Lead",
         location: "Remote",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Patient problem solver",
         references: 5,
         skills: ["Support", "Escalations"]
@@ -207,7 +207,7 @@ const marketplaceByIndustry = {
         name: "Alina Park",
         title: "Patient Support Specialist",
         location: "Remote",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Warm, clear tone",
         references: 4,
         skills: ["Empathy", "Resolution"]
@@ -217,7 +217,7 @@ const marketplaceByIndustry = {
         name: "Mateo Cruz",
         title: "Client Services Lead",
         location: "Dallas, TX",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Trusted client presence",
         references: 3,
         skills: ["Client Care", "QBRs"]
@@ -227,7 +227,7 @@ const marketplaceByIndustry = {
         name: "Grace Hill",
         title: "Front Desk Manager",
         location: "Denver, CO",
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Professional first impression",
         references: 5,
         skills: ["Scheduling", "Service"]
@@ -299,7 +299,7 @@ const marketplaceByIndustry = {
         name: "Caleb Wright",
         title: "Account Executive",
         location: "Austin, TX",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Confident first pitch",
         references: 4,
         skills: ["Discovery", "Closing"]
@@ -309,7 +309,7 @@ const marketplaceByIndustry = {
         name: "Sofia Ramirez",
         title: "SDR Team Lead",
         location: "Phoenix, AZ",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "High-trust outreach style",
         references: 3,
         skills: ["Outbound", "Coaching"]
@@ -319,7 +319,7 @@ const marketplaceByIndustry = {
         name: "Evan Stone",
         title: "Account Manager",
         location: "Remote",
-        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Steady customer presence",
         references: 5,
         skills: ["Renewals", "Relationships"]
@@ -329,7 +329,7 @@ const marketplaceByIndustry = {
         name: "Lena Brooks",
         title: "Sales Manager",
         location: "Chicago, IL",
-        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Clear revenue leadership",
         references: 4,
         skills: ["Pipeline", "Enablement"]
@@ -339,7 +339,7 @@ const marketplaceByIndustry = {
         name: "Andre Lewis",
         title: "Business Development Rep",
         location: "Miami, FL",
-        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Strong discovery questions",
         references: 2,
         skills: ["Prospecting", "Listening"]
@@ -365,7 +365,7 @@ const marketplaceByIndustry = {
         name: "Jordan Kim",
         title: "Clinic Operations Lead",
         location: "Remote",
-        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Organized operating rhythm",
         references: 4,
         skills: ["Operations", "Compliance"]
@@ -375,7 +375,7 @@ const marketplaceByIndustry = {
         name: "Owen Blake",
         title: "Retail Operations Lead",
         location: "Portland, OR",
-        image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Reliable floor leader",
         references: 3,
         skills: ["Training", "Scheduling"]
@@ -385,7 +385,7 @@ const marketplaceByIndustry = {
         name: "Mina Flores",
         title: "Restaurant Operations Manager",
         location: "Miami, FL",
-        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Service-minded operator",
         references: 4,
         skills: ["Service", "Process"]
@@ -395,7 +395,7 @@ const marketplaceByIndustry = {
         name: "Noah Singh",
         title: "Hotel Operations Lead",
         location: "New York, NY",
-        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Polished operations presence",
         references: 5,
         skills: ["Hospitality", "Quality"]
@@ -411,7 +411,7 @@ const marketplaceByIndustry = {
         name: "Owen Blake",
         title: "Retail Operations Lead",
         location: "Portland, OR",
-        image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Reliable floor leader",
         references: 3,
         skills: ["Operations", "Training"]
@@ -421,7 +421,7 @@ const marketplaceByIndustry = {
         name: "Jada Cole",
         title: "Store Manager",
         location: "Atlanta, GA",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Warm customer presence",
         references: 5,
         skills: ["Sales Floor", "Coaching"]
@@ -431,7 +431,7 @@ const marketplaceByIndustry = {
         name: "Tyler Stone",
         title: "Shift Supervisor",
         location: "Dallas, TX",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Calm team direction",
         references: 2,
         skills: ["Scheduling", "Service"]
@@ -441,7 +441,7 @@ const marketplaceByIndustry = {
         name: "Lena Brooks",
         title: "Customer Experience Lead",
         location: "Chicago, IL",
-        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Clear guest recovery",
         references: 4,
         skills: ["Service", "Merchandising"]
@@ -451,7 +451,7 @@ const marketplaceByIndustry = {
         name: "Chris Morgan",
         title: "Sales Floor Lead",
         location: "Las Vegas, NV",
-        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Confident customer support",
         references: 3,
         skills: ["Sales", "Teamwork"]
@@ -477,7 +477,7 @@ const marketplaceByIndustry = {
         name: "Elena Torres",
         title: "Learning Coordinator",
         location: "San Diego, CA",
-        image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Clear learner support",
         references: 6,
         skills: ["Programs", "Communication"]
@@ -487,7 +487,7 @@ const marketplaceByIndustry = {
         name: "Andre Lewis",
         title: "Career Coach",
         location: "Miami, FL",
-        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Encouraging presence",
         references: 2,
         skills: ["Coaching", "Advising"]
@@ -497,7 +497,7 @@ const marketplaceByIndustry = {
         name: "Priya Nair",
         title: "School Administrator",
         location: "Austin, TX",
-        image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Organized family communication",
         references: 4,
         skills: ["Admin", "Scheduling"]
@@ -507,7 +507,7 @@ const marketplaceByIndustry = {
         name: "Caleb Wright",
         title: "Training Specialist",
         location: "Austin, TX",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Explains ideas simply",
         references: 4,
         skills: ["Training", "Enablement"]
@@ -533,7 +533,7 @@ const marketplaceByIndustry = {
         name: "Leo Chen",
         title: "Business Analyst",
         location: "Chicago, IL",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Clear financial context",
         references: 4,
         skills: ["Dashboards", "Analysis"]
@@ -543,7 +543,7 @@ const marketplaceByIndustry = {
         name: "Avery Patel",
         title: "Operations Analyst",
         location: "Dallas, TX",
-        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Steady detail orientation",
         references: 2,
         skills: ["Reporting", "Systems"]
@@ -553,7 +553,7 @@ const marketplaceByIndustry = {
         name: "Sam Rivera",
         title: "FP&A Associate",
         location: "Denver, CO",
-        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Executive-ready summaries",
         references: 5,
         skills: ["Planning", "Models"]
@@ -563,7 +563,7 @@ const marketplaceByIndustry = {
         name: "Grace Hill",
         title: "Client Finance Coordinator",
         location: "Remote",
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&w=700&q=85",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&facepad=5&w=700&q=85",
         signal: "Client-friendly clarity",
         references: 5,
         skills: ["Billing", "Support"]

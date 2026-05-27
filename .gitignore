@@ -10,3 +10,7 @@ node_modules
 
 # Local design/reference exports kept outside the app source.
 /*.png
+
+# Raw uploaded media kept outside the shipped app assets.
+/*.mov
+/*.mp4

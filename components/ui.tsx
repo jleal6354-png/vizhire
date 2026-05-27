@@ -96,7 +96,7 @@ export function CandidateCard({ candidate = candidates[0], compact = false }: { 
   return (
     <article className="glass group overflow-hidden rounded-3xl p-3 transition duration-300 hover:-translate-y-1 hover:shadow-glow">
       <div className="relative overflow-hidden rounded-xl">
-        <img src={candidate.avatar} alt={candidate.name} className={`vh-candidate-thumb w-full transition duration-500 group-hover:scale-105 ${compact ? "h-32" : "h-56"}`} />
+        <img src={candidate.avatar} alt={candidate.name} className={`vh-candidate-thumb w-full transition duration-500 group-hover:scale-[1.02] ${compact ? "h-32" : "h-56"}`} />
         <ComingSoonButton
           className="absolute inset-0 m-auto grid h-12 w-12 place-items-center rounded-full bg-white/92 text-viz-700 shadow-soft"
           ariaLabel={`Play ${candidate.name} video`}

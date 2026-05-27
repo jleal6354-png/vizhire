@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Play, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 
 const industries = [
   {
@@ -16,7 +16,8 @@ const industries = [
     profile: {
       name: "Elena Ramirez",
       title: "Nurse Manager",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&crop=faces&w=1000&q=88",
+      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&crop=faces&facepad=5&w=1200&q=90",
+      video: "/videos/medical-doctor-girl.mov",
       trust: "Calm patient communication, steady presence, and clear clinical judgment.",
       emphasis: "Empathy under pressure"
     }
@@ -32,7 +33,8 @@ const industries = [
     profile: {
       name: "Marcus Lee",
       title: "Technical Lead",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&crop=faces&w=1000&q=88",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&crop=faces&facepad=5&w=1200&q=90",
+      video: "/videos/renewable-energy-engineer.mp4",
       trust: "Explains tradeoffs clearly and makes complex technical decisions easy to understand.",
       emphasis: "Clarity of thought"
     }
@@ -46,9 +48,10 @@ const industries = [
     roles: "Account executives, SDRs, sales managers, account managers",
     cta: "Discover sales talent faster",
     profile: {
-      name: "Sofia Grant",
+      name: "Caleb Morgan",
       title: "Account Executive",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=1000&q=88",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&facepad=5&w=1200&q=90",
+      video: "/videos/sales-business-response.mov",
       trust: "Confident presence, clear story, and the ability to build trust quickly.",
       emphasis: "Presence before the pitch"
     }
@@ -64,7 +67,8 @@ const industries = [
     profile: {
       name: "Andre Collins",
       title: "Guest Experience Lead",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&crop=faces&w=1000&q=88",
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&crop=faces&facepad=5&w=1200&q=90",
+      video: "/videos/hospitality-server-response.mov",
       trust: "Warm, polished guest communication with natural service energy.",
       emphasis: "Guest-facing warmth"
     }
@@ -78,9 +82,10 @@ const industries = [
     roles: "Customer support reps, front desk teams, call center staff, client success",
     cta: "Evaluate customer-facing talent faster",
     profile: {
-      name: "Priya Shah",
+      name: "Mia Parker",
       title: "Client Success Specialist",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=1000&q=88",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&facepad=5&w=1200&q=90",
+      video: "/videos/customer-service-owner-response.mov",
       trust: "Patient tone, thoughtful problem solving, and clear customer communication.",
       emphasis: "Empathy and clarity"
     }
@@ -96,7 +101,8 @@ const industries = [
     profile: {
       name: "Daniel Brooks",
       title: "Operations Director",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=1000&q=88",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&facepad=5&w=1200&q=90",
+      video: "/videos/leadership-suit-response.mov",
       trust: "Composed leadership presence with direct, thoughtful decision framing.",
       emphasis: "Executive communication"
     }
@@ -112,7 +118,7 @@ const industries = [
     profile: {
       name: "Avery Chen",
       title: "Program Coordinator",
-      image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&crop=faces&w=1000&q=88",
+      image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&crop=faces&facepad=5&w=1200&q=90",
       trust: "Explains ideas with patience, structure, and a calm learner-centered presence.",
       emphasis: "Connection and explanation"
     }
@@ -126,9 +132,10 @@ const industries = [
     roles: "Store managers, sales associates, operations leads, shift supervisors",
     cta: "Find stronger frontline talent",
     profile: {
-      name: "Jordan Ellis",
-      title: "Store Operations Lead",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=1000&q=88",
+      name: "Mia Parker",
+      title: "Retail Operations Lead",
+      image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&crop=faces&facepad=5&w=1200&q=90",
+      video: "/videos/retail-owner-speaking.mov",
       trust: "Reliable, composed, and clear with customers, teammates, and daily operations.",
       emphasis: "Professional frontline presence"
     }
@@ -140,111 +147,126 @@ export function IndustryUnderstandingSection() {
   const profile = selectedIndustry.profile;
 
   return (
-    <section className="px-4 py-20">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-viz-100 bg-[radial-gradient(circle_at_18%_18%,rgba(109,59,255,0.14),transparent_30%),linear-gradient(135deg,#ffffff,#fbfaff_48%,#f5f1ff)] p-5 shadow-soft sm:p-8 lg:p-10">
-        <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <div>
-            <p className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-viz-700 shadow-soft">
-              <Sparkles className="h-4 w-4" /> Human-first fit
-            </p>
-            <h2 className="mt-6 max-w-3xl text-balance text-4xl font-black leading-tight text-ink sm:text-6xl">
-              Human understanding matters in every role.
-            </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-              Whether you&apos;re hiring leaders, sales teams, healthcare staff, engineers, hospitality talent, or customer-facing professionals, VizHire helps you see how people communicate, explain, present themselves, and build trust before the interview.
-            </p>
+    <section id="candidates" className="bg-[radial-gradient(circle_at_78%_18%,rgba(109,59,255,0.28),transparent_30%),linear-gradient(135deg,#070817,#120a34_52%,#25106f)] px-4 py-16 text-white">
+      <div className="mx-auto grid max-w-7xl gap-9 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
+        <div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-viz-100 shadow-[0_18px_54px_rgba(0,0,0,0.18)] backdrop-blur">
+            <Sparkles className="h-4 w-4" /> Human-first marketplace
+          </p>
+          <h2 className="mt-5 text-balance text-4xl font-black leading-tight text-white sm:text-5xl">
+            Communication and presence matter differently in every role.
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/72">
+            Explore how VizHire helps employers understand candidates through role-specific responses, communication style, professional presence, and trust before the interview.
+          </p>
 
-            <div className="mt-8 flex flex-wrap gap-2">
-              {industries.map((industry) => {
-                const isSelected = industry.name === selectedIndustry.name;
+          <div className="mt-5 flex flex-wrap gap-2">
+            {industries.slice(0, 6).map((industry) => {
+              const isSelected = industry.name === selectedIndustry.name;
 
-                return (
-                  <button
-                    key={industry.name}
-                    type="button"
-                    onClick={() => setSelectedIndustry(industry)}
-                    className={`rounded-full px-4 py-2.5 text-sm font-black transition ${
-                      isSelected
-                        ? "bg-viz-700 text-white shadow-glow"
-                        : "border border-viz-100 bg-white/86 text-viz-700 shadow-soft hover:-translate-y-0.5 hover:border-viz-300"
-                    }`}
-                  >
-                    {industry.name}
-                  </button>
-                );
-              })}
-            </div>
+              return (
+                <button
+                  key={industry.name}
+                  type="button"
+                  onClick={() => setSelectedIndustry(industry)}
+                  className={`rounded-full px-3.5 py-2 text-xs font-black transition sm:text-sm ${
+                    isSelected
+                      ? "bg-white text-viz-800 shadow-[0_16px_40px_rgba(255,255,255,0.18)]"
+                      : "border border-white/14 bg-white/8 text-white/84 hover:-translate-y-0.5 hover:bg-white/14"
+                  }`}
+                >
+                  {industry.name}
+                </button>
+              );
+            })}
+            <span className="rounded-full border border-white/14 bg-white/8 px-3.5 py-2 text-xs font-black text-white/72 sm:text-sm">
+              And many more
+            </span>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-viz-500/10 blur-2xl" />
-            <div className="grid gap-4 rounded-[2rem] border border-white/80 bg-white/82 p-4 shadow-[0_30px_90px_rgba(34,21,84,0.13)] backdrop-blur xl:grid-cols-[0.78fr_1fr]">
-              <div key={`${selectedIndustry.name}-visual`} className="relative min-h-[340px] overflow-hidden rounded-3xl bg-midnight animate-[fadeIn_240ms_ease-out]">
+          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+            <Link
+              href="/employer-signup"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-viz-700 px-5 text-sm font-black text-white shadow-[0_18px_42px_rgba(82,42,232,0.24)] transition hover:-translate-y-0.5"
+            >
+              Browse candidates
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/candidate-signup"
+              className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 text-sm font-black text-white shadow-[0_18px_42px_rgba(0,0,0,0.16)] transition hover:-translate-y-0.5 hover:bg-white/16"
+            >
+              Create my profile
+            </Link>
+          </div>
+        </div>
+
+        <div key={selectedIndustry.name} className="animate-[fadeIn_220ms_ease-out] overflow-hidden rounded-[2rem] border border-white/14 bg-white/10 p-3 shadow-[0_34px_100px_rgba(0,0,0,0.24)] backdrop-blur">
+          <div className="grid items-stretch gap-3 lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_310px]">
+            <div className="relative min-h-[300px] overflow-hidden rounded-[1.5rem] bg-midnight sm:min-h-[380px] lg:h-full lg:min-h-[430px]">
+              <div
+                className="absolute inset-0 scale-110 bg-cover bg-center opacity-35 blur-2xl"
+                style={{ backgroundImage: `url(${profile.image})` }}
+              />
+              {profile.video ? (
+                <video
+                  aria-label={`${profile.name}, ${profile.title}, VizHire role-specific response`}
+                  autoPlay
+                  className="vh-premium-video absolute inset-0 h-full w-full object-cover object-center"
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  poster={profile.image}
+                >
+                  <source src={profile.video} />
+                </video>
+              ) : (
                 <img
                   src={profile.image}
-                  alt={`${profile.name}, ${profile.title}, VizHire preview`}
-                  className="absolute inset-0 h-full w-full object-cover transition duration-500"
+                  alt={`${profile.name}, ${profile.title}, VizHire role-specific response`}
+                  className="absolute inset-0 h-full w-full object-contain object-center"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/86 via-black/30 to-transparent" />
-                <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/24 to-transparent" />
-                <span className="absolute left-4 top-4 rounded-full bg-white/94 px-3 py-1 text-[11px] font-black text-viz-700 shadow-soft backdrop-blur">
-                  {selectedIndustry.name}
-                </span>
-                <button
-                  type="button"
-                  className="absolute inset-0 m-auto grid h-14 w-14 place-items-center rounded-full bg-white text-viz-700 shadow-soft transition hover:scale-105"
-                  aria-label={`Play ${profile.name} intro`}
-                >
-                  <Play className="ml-1 h-6 w-6 fill-current" />
-                </button>
-                <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                  <p className="text-2xl font-black">{profile.name}</p>
-                  <p className="mt-1 text-sm font-bold text-white/76">{profile.title}</p>
-                  <div className="mt-4 rounded-2xl border border-white/12 bg-white/12 p-3 backdrop-blur">
-                    <p className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-viz-100">
-                      <ShieldCheck className="h-4 w-4" />
-                      {profile.emphasis}
-                    </p>
-                    <p className="mt-2 text-sm font-bold leading-6 text-white/82">{profile.trust}</p>
-                  </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/4 to-black/18" />
+              <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/34 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
+                <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
+                Role-specific response
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-viz-200">{selectedIndustry.name}</p>
+                <h3 className="mt-2 text-2xl font-black">{profile.name}</h3>
+                <p className="mt-1 text-sm font-bold text-white/82">{profile.title} · {profile.emphasis}</p>
+                <p className="mt-2 max-w-xl text-sm font-bold leading-6 text-white/76">{profile.trust}</p>
+              </div>
+            </div>
+
+            <div className="flex h-[430px] min-h-0 flex-col justify-between rounded-[1.5rem] bg-white p-4 text-ink">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">{selectedIndustry.name}</p>
+                <h3 className="mt-2 text-balance text-lg font-black leading-tight text-ink xl:text-xl">{selectedIndustry.headline}</h3>
+                <p className="mt-2 line-clamp-4 text-sm leading-6 text-slate-600">{selectedIndustry.copy}</p>
+
+                <div className="mt-4 space-y-2">
+                  <p className="text-sm font-black text-ink">Employer insight</p>
+                  {selectedIndustry.points.map((point) => (
+                    <div key={point} className="flex items-center gap-2 rounded-xl border border-viz-100 bg-white px-3 py-2">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-viz-700" />
+                      <span className="text-xs font-black leading-5 text-slate-700">{point}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div key={selectedIndustry.name} className="flex animate-[fadeIn_220ms_ease-out] flex-col p-2 sm:p-4">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">{selectedIndustry.name}</p>
-                <h3 className="mt-3 text-3xl font-black leading-tight text-ink">{selectedIndustry.headline}</h3>
-                <p className="mt-4 leading-7 text-slate-600">{selectedIndustry.copy}</p>
-
-                <div className="mt-6 space-y-3">
-                  <p className="text-sm font-black text-ink">What employers understand earlier</p>
-                  <div className="grid gap-2">
-                    {selectedIndustry.points.map((point) => (
-                      <div key={point} className="flex items-center gap-3 rounded-2xl bg-viz-50/80 px-4 py-3">
-                        <CheckCircle2 className="h-5 w-5 shrink-0 text-viz-700" />
-                        <span className="text-sm font-black text-slate-700">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-6 rounded-2xl border border-viz-100 bg-white p-4 shadow-soft">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Example roles</p>
-                  <p className="mt-2 text-sm font-bold leading-6 text-ink">{selectedIndustry.roles}</p>
-                </div>
-
-                <div className="mt-3 rounded-2xl bg-gradient-to-r from-viz-50 to-white p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-viz-600">Candidate preview</p>
-                  <p className="mt-2 text-sm font-bold leading-6 text-slate-700">
-                    {profile.title} · {profile.emphasis}
-                  </p>
-                </div>
-
+              <div className="mt-4 border-t border-viz-100 pt-3">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Example roles</p>
+                <p className="mt-2 line-clamp-2 text-sm font-bold leading-6 text-ink">{selectedIndustry.roles}</p>
                 <Link
                   href="/employer-signup"
-                  className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-viz-700 px-5 text-sm font-black text-white shadow-glow transition hover:-translate-y-0.5"
+                  className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-xl bg-viz-700 px-4 text-center text-xs font-black leading-5 text-white shadow-[0_18px_42px_rgba(82,42,232,0.24)] transition hover:-translate-y-0.5 xl:text-sm"
                 >
                   {selectedIndustry.cta}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 shrink-0" />
                 </Link>
               </div>
             </div>

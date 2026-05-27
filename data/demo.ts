@@ -29,9 +29,9 @@ export const candidates = [
     availability: "Available in 2 weeks",
     salary: "$105k - $125k",
     avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&facepad=3&w=900&q=85",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&facepad=5&w=900&q=85",
     video:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&facepad=3&w=1400&q=88",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&facepad=5&w=1400&q=88",
     summary:
       "A thoughtful growth marketer who blends brand storytelling, lifecycle strategy, and calm executive communication.",
     about:
@@ -64,9 +64,9 @@ export const candidates = [
     availability: "Immediate",
     salary: "$88k - $104k",
     avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=3&w=900&q=85",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=5&w=900&q=85",
     video:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=3&w=1400&q=88",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&facepad=5&w=1400&q=88",
     summary:
       "Analytical, steady, and strong at explaining complex revenue patterns to non-technical teams.",
     about:
@@ -96,9 +96,9 @@ export const candidates = [
     availability: "Open to interviews",
     salary: "$115k - $135k",
     avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&facepad=3&w=900&q=85",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&facepad=5&w=900&q=85",
     video:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&facepad=3&w=1400&q=88",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&facepad=5&w=1400&q=88",
     summary:
       "A curious researcher with a gift for surfacing the human reason behind product behavior.",
     about:
@@ -128,9 +128,9 @@ export const candidates = [
     availability: "30 days",
     salary: "$92k - $108k",
     avatar:
-      "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?auto=format&fit=crop&crop=faces&facepad=3&w=900&q=85",
+      "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?auto=format&fit=crop&crop=faces&facepad=5&w=900&q=85",
     video:
-      "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?auto=format&fit=crop&crop=faces&facepad=3&w=1400&q=88",
+      "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?auto=format&fit=crop&crop=faces&facepad=5&w=1400&q=88",
     summary:
       "Empathetic operator who improves retention by making customer conversations more structured and useful.",
     about:
@@ -160,9 +160,9 @@ export const candidates = [
     availability: "Open to interviews",
     salary: "$108k - $128k",
     avatar:
-      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&facepad=3&w=900&q=85",
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&facepad=5&w=900&q=85",
     video:
-      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&facepad=3&w=1400&q=88",
+      "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&crop=faces&facepad=5&w=1400&q=88",
     summary:
       "A composed storyteller who connects product value, customer insight, and campaign strategy with clarity.",
     about:
@@ -192,9 +192,9 @@ export const candidates = [
     availability: "Available in 3 weeks",
     salary: "$98k - $118k",
     avatar:
-      "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=3&w=900&q=85",
+      "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=5&w=900&q=85",
     video:
-      "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=3&w=1400&q=88",
+      "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&crop=faces&facepad=5&w=1400&q=88",
     summary:
       "A steady growth operator with strong communication, practical experimentation, and calm stakeholder presence.",
     about:

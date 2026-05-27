@@ -73,7 +73,7 @@ a svg {
 
   .vh-candidate-media::before {
     background-image: var(--candidate-image);
-    background-position: center 24%;
+    background-position: center 34%;
     background-size: cover;
     content: "";
     filter: blur(22px);
@@ -100,7 +100,7 @@ a svg {
 
   .vh-candidate-thumb {
     object-fit: cover;
-    object-position: center 24%;
+    object-position: center 36%;
   }
 }
 
@@ -114,6 +114,13 @@ a svg {
   border: 1px solid rgba(109, 59, 255, 0.14);
   box-shadow: 0 24px 80px rgba(11, 16, 43, 0.09);
   backdrop-filter: blur(24px);
+}
+
+.vh-premium-video {
+  backface-visibility: hidden;
+  filter: brightness(1.08) contrast(1.2) saturate(1.22);
+  transform: translateZ(0) scale(1.006);
+  will-change: transform, filter;
 }
 
 .dark-glass {
@@ -370,15 +377,34 @@ a svg {
 }
 
 .employer-proof-message {
-  animation: cinematicMessage 13.5s ease-in-out infinite;
+  animation: employerProofMessage 13.5s ease-in-out infinite;
   animation-delay: var(--employer-proof-delay);
   opacity: 0;
-  will-change: opacity, transform, filter;
+  will-change: opacity, transform;
 }
 
 .employer-proof-progress {
   animation: cinematicProgress 13.5s linear infinite;
   transform-origin: left center;
+}
+
+@keyframes employerProofMessage {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  6%,
+  27% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  34% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
