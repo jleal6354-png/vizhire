@@ -231,16 +231,17 @@ export function IndustryUnderstandingSection() {
                   className="absolute inset-0 h-full w-full object-contain object-center"
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/4 to-black/18" />
-              <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/34 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
+              <div className="vh-video-lower-gradient absolute inset-0" />
+              <div className="vh-video-top-gradient absolute inset-0" />
+              <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/48 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white shadow-[0_14px_34px_rgba(0,0,0,0.28)] backdrop-blur-md">
                 <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
                 Role-specific response
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <div className="vh-readable-copy absolute bottom-0 left-0 right-0 p-4 text-white">
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-viz-200">{selectedIndustry.name}</p>
                 <h3 className="mt-2 text-2xl font-black">{profile.name}</h3>
-                <p className="mt-1 text-sm font-bold text-white/82">{profile.title} · {profile.emphasis}</p>
-                <p className="mt-2 max-w-xl text-sm font-bold leading-6 text-white/76">{profile.trust}</p>
+                <p className="mt-1 text-sm font-black text-white/92">{profile.title} · {profile.emphasis}</p>
+                <p className="mt-2 max-w-xl text-sm font-bold leading-6 text-white/88">{profile.trust}</p>
               </div>
             </div>
 

@@ -84,21 +84,21 @@ export default function LandingPage() {
                       <source src={comparisonCandidate.responseVideo} />
                     </video>
                     <div className="animate-human-presence absolute inset-0 bg-[radial-gradient(circle_at_48%_36%,rgba(255,255,255,0.1),transparent_20%)] mix-blend-screen" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/22 via-black/0 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/62 via-transparent to-black/4" />
-                    <div className="absolute left-3 top-3 flex items-center gap-2 rounded-full bg-black/28 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.16em] text-white/92 backdrop-blur">
+                    <div className="vh-video-lower-gradient absolute inset-0" />
+                    <div className="vh-video-top-gradient absolute inset-0" />
+                    <div className="absolute left-3 top-3 flex items-center gap-2 rounded-full bg-black/48 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.16em] text-white/95 shadow-[0_12px_30px_rgba(0,0,0,0.28)] backdrop-blur-md">
                       <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
                       Role-specific response
                     </div>
                     <div className="absolute left-3 right-3 top-12 h-0.5 overflow-hidden rounded-full bg-white/14">
                       <span className="cinematic-progress block h-full rounded-full bg-white/70" />
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <p className="talking-caption max-w-md text-sm font-bold leading-5 text-white/86">
+                    <div className="vh-readable-copy absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <p className="talking-caption max-w-md text-sm font-black leading-5 text-white/94">
                         “For this role, I would focus on helping customers feel heard, supported, and confident in the next step.”
                       </p>
                       <h2 className="mt-3 text-2xl font-black leading-none">{comparisonCandidate.name}</h2>
-                      <p className="mt-1.5 text-xs font-bold text-white/78">{comparisonCandidate.title} · {comparisonCandidate.location}</p>
+                      <p className="mt-1.5 text-xs font-black text-white/88">{comparisonCandidate.title} · {comparisonCandidate.location}</p>
                     </div>
                   </div>
 
@@ -209,15 +209,16 @@ export default function LandingPage() {
                 >
                   <source src="/videos/black-professional-girl.mov" />
                 </video>
-                <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/62 via-black/0 to-black/6" />
-                <div className="absolute left-4 top-4 z-[3] flex items-center gap-2 rounded-full bg-black/28 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-white backdrop-blur">
+                <div className="vh-video-lower-gradient absolute inset-0 z-[2]" />
+                <div className="vh-video-top-gradient absolute inset-0 z-[2]" />
+                <div className="absolute left-4 top-4 z-[3] flex items-center gap-2 rounded-full bg-black/48 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-white shadow-[0_12px_30px_rgba(0,0,0,0.28)] backdrop-blur-md">
                   <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
                   Role-specific response
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 z-[3] p-5">
+                <div className="vh-readable-copy absolute bottom-0 left-0 right-0 z-[3] p-5">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-200">Employer question response</p>
                   <h3 className="mt-2 text-3xl font-black">Maya Johnson</h3>
-                  <p className="talking-caption mt-2 text-sm font-bold text-white/82">Clear, confident, and relevant to the role.</p>
+                  <p className="talking-caption mt-2 text-sm font-black text-white/92">Clear, confident, and relevant to the role.</p>
                 </div>
               </div>
             </div>
@@ -254,21 +255,22 @@ export default function LandingPage() {
                   >
                     <source src="/videos/employer-question-response.mp4" type="video/mp4" />
                   </video>
-                  <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/68 via-black/0 to-transparent" />
-                  <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/24 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
+                  <div className="vh-video-lower-gradient absolute inset-0 z-[2]" />
+                  <div className="vh-video-top-gradient absolute inset-0 z-[2]" />
+                  <div className="absolute left-4 top-4 z-[3] flex items-center gap-2 rounded-full bg-black/48 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white shadow-[0_12px_30px_rgba(0,0,0,0.28)] backdrop-blur-md">
                     <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
                     Response in progress
                   </div>
-                  <div className="absolute bottom-24 left-5 flex items-end gap-1.5 text-white/78">
+                  <div className="absolute bottom-24 left-5 z-[3] flex items-end gap-1.5 text-white/78">
                     {[0, 1, 2, 3, 4].map((bar) => (
                       <span key={bar} className="speaking-bar block w-1.5 rounded-full bg-white/72" style={{ "--bar-delay": `${bar * 0.12}s` } as React.CSSProperties} />
                     ))}
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                  <div className="vh-readable-copy absolute bottom-0 left-0 right-0 z-[3] p-5 text-white">
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-viz-200">Before the interview</p>
                     <h3 className="mt-2 text-3xl font-black">{candidates[1].name}</h3>
-                    <p className="mt-1 text-sm font-bold text-white/82">{candidates[1].title} · {candidates[1].location}</p>
-                    <p className="talking-caption mt-3 max-w-xl text-sm font-bold leading-6 text-white/76">
+                    <p className="mt-1 text-sm font-black text-white/92">{candidates[1].title} · {candidates[1].location}</p>
+                    <p className="talking-caption mt-3 max-w-xl text-sm font-bold leading-6 text-white/88">
                       Responds to the hiring team's question with calm, role-relevant clarity.
                     </p>
                   </div>
