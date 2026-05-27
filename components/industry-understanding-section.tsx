@@ -145,6 +145,7 @@ const industries = [
 export function IndustryUnderstandingSection() {
   const [selectedIndustry, setSelectedIndustry] = useState(industries[0]);
   const profile = selectedIndustry.profile;
+  const hasVideo = Boolean(profile.video);
 
   return (
     <section id="candidates" className="bg-[radial-gradient(circle_at_78%_18%,rgba(109,59,255,0.28),transparent_30%),linear-gradient(135deg,#070817,#120a34_52%,#25106f)] px-4 py-16 text-white">
@@ -204,12 +205,15 @@ export function IndustryUnderstandingSection() {
         <div key={selectedIndustry.name} className="animate-[fadeIn_220ms_ease-out] overflow-hidden rounded-[2rem] border border-white/14 bg-white/10 p-3 shadow-[0_34px_100px_rgba(0,0,0,0.24)] backdrop-blur">
           <div className="grid items-stretch gap-3 lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_310px]">
             <div className="relative min-h-[300px] overflow-hidden rounded-[1.5rem] bg-midnight sm:min-h-[380px] lg:h-full lg:min-h-[430px]">
-              <div
-                className="absolute inset-0 scale-110 bg-cover bg-center opacity-35 blur-2xl"
-                style={{ backgroundImage: `url(${profile.image})` }}
-              />
-              {profile.video ? (
+              {!hasVideo && (
+                <div
+                  className="absolute inset-0 scale-110 bg-cover bg-center opacity-35 blur-2xl"
+                  style={{ backgroundImage: `url(${profile.image})` }}
+                />
+              )}
+              {hasVideo ? (
                 <video
+                  key={profile.video}
                   aria-label={`${profile.name}, ${profile.title}, VizHire role-specific response`}
                   autoPlay
                   className="vh-premium-video absolute inset-0 h-full w-full object-cover object-center"
@@ -217,7 +221,6 @@ export function IndustryUnderstandingSection() {
                   muted
                   playsInline
                   preload="auto"
-                  poster={profile.image}
                 >
                   <source src={profile.video} />
                 </video>
