@@ -2,10 +2,17 @@ import Link from "next/link";
 import { CheckCircle2, Link2, ShieldCheck, Star, Video } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { IndustryUnderstandingSection } from "@/components/industry-understanding-section";
-import { ButtonLink, CandidateCard, SectionHeading, TrustPill, VideoFrame } from "@/components/ui";
+import { ButtonLink, CandidateCard, TrustPill } from "@/components/ui";
 import { candidates } from "@/data/demo";
 
 export default function LandingPage() {
+  const comparisonCandidate = {
+    name: "Emily Carter",
+    title: "Customer Experience Manager",
+    location: "Nashville, TN",
+    video: "/images/interview-intro-emily.png"
+  };
+
   return (
     <main className="overflow-hidden">
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-viz-100/70 bg-white/86 backdrop-blur-xl">
@@ -45,30 +52,31 @@ export default function LandingPage() {
           </div>
 
           <div className="relative">
-            <div className="grid items-center gap-5 sm:grid-cols-[0.82fr_1fr]">
-              <div className="rounded-3xl border border-slate-200 bg-white/94 p-5 shadow-[0_24px_80px_rgba(15,23,42,0.07)] grayscale">
-                <div className="border-b border-slate-200 pb-4 text-center">
+            <div className="grid items-stretch gap-4 sm:grid-cols-[0.68fr_1.32fr]">
+              <div className="flex min-h-[310px] flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_20px_60px_rgba(15,23,42,0.06)] grayscale">
+                <div className="mb-3 flex items-center justify-between border-b border-slate-200 pb-2">
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Resume.pdf</span>
+                  <span className="h-2 w-10 rounded-full bg-slate-200" />
+                </div>
+                <div className="border-b border-slate-200 pb-3">
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Traditional Resume</p>
-                    <h2 className="mt-3 text-2xl font-black leading-none text-slate-800">Maya Johnson</h2>
-                    <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Growth Marketing Manager</p>
-                    <p className="mt-2 text-[10px] font-bold text-slate-400">New York, NY · maya@email.com · linkedin.com/in/maya</p>
+                    <h2 className="text-xl font-black leading-none text-slate-800">Emily Carter</h2>
+                    <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Customer Experience Manager</p>
                   </div>
                 </div>
 
-                <div className="mt-4 space-y-4 text-slate-600">
+                <div className="mt-3 flex-1 space-y-3 text-slate-600">
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Professional Summary</p>
-                    <p className="mt-2 text-[11px] leading-5 text-slate-500">Growth marketer with experience in lifecycle campaigns, brand storytelling, CRM strategy, and performance reporting.</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Summary</p>
+                    <p className="mt-2 text-[11px] leading-5 text-slate-500">Customer experience leader focused on service training, communication, and retention.</p>
                   </div>
 
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Experience</p>
-                    <div className="mt-3 space-y-3">
+                    <div className="mt-2 space-y-2.5">
                       {[
-                        ["Senior Marketing Manager", "Brightline Health · 2021-2024"],
-                        ["Growth Strategist", "Northstar Labs · 2019-2021"],
-                        ["Marketing Coordinator", "Halo Retail · 2017-2019"]
+                        ["Customer Experience Manager", "Brightway Home · 2021-Present"],
+                        ["Client Success Lead", "Harbor Services · 2019-2021"]
                       ].map(([role, meta]) => (
                         <div key={role}>
                           <div className="flex items-start justify-between gap-3">
@@ -76,57 +84,45 @@ export default function LandingPage() {
                             <p className="shrink-0 text-[10px] font-bold text-slate-400">{meta.split(" · ")[1]}</p>
                           </div>
                           <p className="mt-0.5 text-[11px] font-bold text-slate-400">{meta.split(" · ")[0]}</p>
-                          <ul className="mt-2 space-y-1 text-[11px] leading-4 text-slate-500">
-                            <li>• Managed lifecycle campaigns and conversion reporting.</li>
-                            <li>• Partnered with sales, product, and creative teams.</li>
-                          </ul>
+                          <p className="mt-1.5 text-[11px] leading-4 text-slate-500">Led coaching, retention reviews, and customer communication improvements.</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 border-t border-slate-100 pt-4">
+                  <div className="border-t border-slate-100 pt-3">
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Skills</p>
-                      <p className="mt-2 text-[11px] leading-5 text-slate-500">Growth Strategy, CRM, Analytics, Brand, Lifecycle</p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Education</p>
-                      <p className="mt-2 text-[11px] leading-5 text-slate-500">B.A. Marketing<br />Google Analytics Cert.</p>
+                      <p className="mt-2 text-[11px] leading-5 text-slate-500">Communication, Coaching, Retention, Training</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-2xl bg-slate-50 p-3">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Still missing</p>
-                  <p className="mt-2 text-sm font-black leading-5 text-slate-700">Qualifications without communication. Information without human understanding.</p>
+                <div className="mt-3 border-t border-slate-100 pt-3">
+                  <p className="text-sm font-black leading-5 text-slate-700">Information without human understanding.</p>
                 </div>
               </div>
 
-              <div className="glass rounded-[2rem] p-3 ring-1 ring-viz-200">
-                <div className="vh-candidate-media vh-candidate-media-balanced group h-[280px] rounded-[1.55rem] sm:h-[320px] lg:h-[340px]" style={{ "--candidate-image": `url(${candidates[0].video})` } as React.CSSProperties}>
-                  <img src={candidates[0].video} alt={`${candidates[0].name} VizHire video preview`} className="animate-viz-speaking" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/8 to-transparent" />
+              <div className="glass min-h-[310px] rounded-3xl p-3 ring-1 ring-viz-200">
+                <div className="relative h-full min-h-[286px] overflow-hidden rounded-[1.55rem] bg-midnight">
+                  <img src={comparisonCandidate.video} alt={`${comparisonCandidate.name} VizHire video preview`} className="animate-viz-human h-full w-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent" />
                   <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/28 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
-                    <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)]" />
-                    Speaking now
+                    <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
+                    Intro in progress
                   </div>
-                  <div className="absolute right-4 top-4 max-w-[190px] rounded-2xl bg-white/92 px-4 py-3 text-viz-950 shadow-soft backdrop-blur">
-                    <p className="talking-caption text-sm font-black leading-5">“I help teams turn customer insight into growth.”</p>
+                  <div className="absolute bottom-20 left-4 right-4">
+                    <p className="talking-caption max-w-md rounded-2xl bg-black/24 px-4 py-3 text-sm font-bold leading-6 text-white/86 backdrop-blur">
+                      “I help customers feel heard, supported, and confident in the next step.”
+                    </p>
                   </div>
-                  <Link href="/sample-profile" className="absolute inset-0 m-auto grid h-12 w-12 place-items-center rounded-full bg-white/95 text-viz-700 shadow-soft transition group-hover:scale-105" aria-label="Open Maya Johnson sample profile">
-                    <Video className="h-5 w-5" />
-                  </Link>
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-viz-200">Human understanding</p>
-                    <h2 className="mt-1 text-3xl font-black">{candidates[0].name}</h2>
-                    <p className="mt-1 text-sm font-bold text-white/82">{candidates[0].title} · {candidates[0].location}</p>
+                  <div className="absolute left-4 right-4 top-16 h-1 overflow-hidden rounded-full bg-white/16">
+                    <span className="cinematic-progress block h-full rounded-full bg-white/70" />
                   </div>
-                </div>
-
-                <div className="px-2 pb-2 pt-4">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">VizHire Profile</p>
-                  <p className="mt-2 text-xl font-black leading-tight text-ink">You can feel how someone communicates before the first interview.</p>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h2 className="mt-1 text-2xl font-black sm:text-3xl">{comparisonCandidate.name}</h2>
+                    <p className="mt-1 text-sm font-bold text-white/82">{comparisonCandidate.title} · {comparisonCandidate.location}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -229,33 +225,61 @@ export default function LandingPage() {
       </section>
 
       <section id="employers" className="px-4 py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.78fr_1.22fr]">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.24em] text-viz-600">For employers</p>
-            <h2 className="mt-4 text-balance text-4xl font-black text-ink sm:text-6xl">Interview with more confidence.</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">Understand who you are hiring before investing time in interviews. See how candidates communicate, present themselves, and build trust through video, professional proof, and skill alignment.</p>
+            <h2 className="mt-4 text-balance text-4xl font-black text-ink sm:text-6xl">Everyone looks qualified on paper.</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">Communication reveals who actually fits. VizHire helps you understand presence, clarity, professionalism, and trust before interviews take over your calendar.</p>
             <p className="mt-4 rounded-2xl bg-viz-50 px-4 py-3 text-sm font-black text-viz-700">Post your first job free for 30 days.</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/employer-signup">Browse candidates</ButtonLink>
               <ButtonLink href="/employer-signup" variant="secondary">Post your first job free</ButtonLink>
             </div>
           </div>
-          <div className="glass rounded-3xl p-4">
-            <div className="grid gap-4 lg:grid-cols-[1fr_0.35fr]">
-              <VideoFrame image={candidates[1].video} name={candidates[1].name} title={candidates[1].title} match={92} />
-              <div className="space-y-4">
-                <div className="rounded-2xl bg-white p-5 shadow-soft">
-                  <p className="font-black">Human fit signals</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {candidates[1].topSkills.slice(0, 4).map((skill) => (
-                      <span key={skill} className="rounded-full bg-viz-50 px-3 py-1 text-xs font-bold text-viz-700">{skill}</span>
-                    ))}
-                  </div>
+
+          <div className="glass rounded-[2rem] p-3 sm:p-4">
+            <div className="grid gap-4 lg:grid-cols-[1fr_0.38fr]">
+              <div className="vh-candidate-media vh-candidate-media-balanced h-[300px] rounded-[1.5rem] sm:h-[360px] lg:h-[390px]" style={{ "--candidate-image": `url(${candidates[1].video})` } as React.CSSProperties}>
+                <img src={candidates[1].video} alt={`${candidates[1].name} professional intro preview`} className="animate-viz-speaking" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/10 to-transparent" />
+                <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/24 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
+                  Intro in progress
                 </div>
-                <div className="rounded-2xl bg-white p-5 shadow-soft">
-                  <p className="font-black">Candidate note</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">Clear communicator with calm presence. Worth fast-tracking before another team moves first.</p>
+                <div className="absolute bottom-24 left-5 flex items-end gap-1.5 text-white/78">
+                  {[0, 1, 2, 3, 4].map((bar) => (
+                    <span key={bar} className="speaking-bar block w-1.5 rounded-full bg-white/72" style={{ "--bar-delay": `${bar * 0.12}s` } as React.CSSProperties} />
+                  ))}
                 </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-viz-200">Before the interview</p>
+                  <h3 className="mt-2 text-3xl font-black">{candidates[1].name}</h3>
+                  <p className="mt-1 text-sm font-bold text-white/82">{candidates[1].title} · {candidates[1].location}</p>
+                  <p className="talking-caption mt-3 max-w-xl text-sm font-bold leading-6 text-white/76">
+                    Calmly explains revenue patterns and makes complex tradeoffs easy to follow.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">What you notice</p>
+                <div className="mt-5 space-y-3">
+                  {[
+                    "Clear communicator",
+                    "Explains ideas calmly",
+                    "Feels prepared",
+                    "Strong team presence",
+                    "Worth moving forward"
+                  ].map((observation) => (
+                    <div key={observation} className="flex items-center gap-3 rounded-2xl bg-viz-50/70 px-4 py-3 text-sm font-black text-ink">
+                      <span className="h-2 w-2 rounded-full bg-viz-600" />
+                      {observation}
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 text-sm font-bold leading-6 text-slate-600">
+                  Resumes explain experience. Presence reveals alignment.
+                </p>
               </div>
             </div>
           </div>
@@ -278,24 +302,6 @@ export default function LandingPage() {
               <CandidateCard key={candidate.id} candidate={candidate} />
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-20">
-        <SectionHeading eyebrow="Trust signals" title="The human context resumes miss." text="The best hires are more than credentials. VizHire helps teams see communication, confidence, professionalism, and fit earlier." />
-        <div className="mx-auto mt-12 grid max-w-7xl gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {[
-            ["Trust before the interview", "Professional proof, references, and recommendations help employers feel more confident about who they are meeting.", Star],
-            ["Clear fit signals", "Skill alignment supports the bigger question: does this person communicate, think, and show up in a way that fits the role?", CheckCircle2],
-            ["Communication you can feel", "Short video introductions reveal presence, confidence, and professionalism faster than a resume ever could.", Video],
-            ["A story worth sharing", "Candidates can share one polished profile link that helps employers see the person behind the application.", Link2]
-          ].map(([title, copy, Icon]) => (
-            <div key={title as string} className="glass rounded-2xl p-6">
-              <Icon className="h-8 w-8 text-viz-600" />
-              <p className="mt-5 text-xl font-black text-ink">{title as string}</p>
-              <p className="mt-3 leading-7 text-slate-600">{copy as string}</p>
-            </div>
-          ))}
         </div>
       </section>
 
