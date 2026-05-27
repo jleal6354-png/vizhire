@@ -229,46 +229,87 @@ export default function LandingPage() {
 
           <div className="glass rounded-[2rem] p-3 sm:p-4">
             <div className="grid gap-4 lg:grid-cols-[1fr_0.38fr]">
-              <div className="vh-candidate-media vh-candidate-media-balanced h-[300px] rounded-[1.5rem] sm:h-[360px] lg:h-[390px]" style={{ "--candidate-image": `url(${candidates[1].video})` } as React.CSSProperties}>
-                <img src={candidates[1].video} alt={`${candidates[1].name} answering a hiring team question`} className="animate-viz-speaking" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/10 to-transparent" />
-                <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/24 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
-                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
-                  Response in progress
+              <div className="space-y-4">
+                <div className="vh-candidate-media vh-candidate-media-balanced h-[300px] rounded-[1.5rem] sm:h-[360px] lg:h-[390px]" style={{ "--candidate-image": `url(${candidates[1].video})` } as React.CSSProperties}>
+                  <video
+                    aria-label={`${candidates[1].name} answering a hiring team question`}
+                    autoPlay
+                    className="relative z-[1] h-full w-full object-cover object-center contrast-[1.12] saturate-[1.18] brightness-[1.04]"
+                    loop
+                    muted
+                    playsInline
+                    poster={candidates[1].video}
+                  >
+                    <source src="/videos/employer-question-response.mp4" type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/68 via-black/0 to-transparent" />
+                  <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/24 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
+                    <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
+                    Response in progress
+                  </div>
+                  <div className="absolute bottom-24 left-5 flex items-end gap-1.5 text-white/78">
+                    {[0, 1, 2, 3, 4].map((bar) => (
+                      <span key={bar} className="speaking-bar block w-1.5 rounded-full bg-white/72" style={{ "--bar-delay": `${bar * 0.12}s` } as React.CSSProperties} />
+                    ))}
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-viz-200">Before the interview</p>
+                    <h3 className="mt-2 text-3xl font-black">{candidates[1].name}</h3>
+                    <p className="mt-1 text-sm font-bold text-white/82">{candidates[1].title} · {candidates[1].location}</p>
+                    <p className="talking-caption mt-3 max-w-xl text-sm font-bold leading-6 text-white/76">
+                      Responds to the hiring team's question with calm, role-relevant clarity.
+                    </p>
+                  </div>
                 </div>
-                <div className="absolute bottom-24 left-5 flex items-end gap-1.5 text-white/78">
-                  {[0, 1, 2, 3, 4].map((bar) => (
-                    <span key={bar} className="speaking-bar block w-1.5 rounded-full bg-white/72" style={{ "--bar-delay": `${bar * 0.12}s` } as React.CSSProperties} />
-                  ))}
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-viz-200">Before the interview</p>
-                  <h3 className="mt-2 text-3xl font-black">{candidates[1].name}</h3>
-                  <p className="mt-1 text-sm font-bold text-white/82">{candidates[1].title} · {candidates[1].location}</p>
-                  <p className="talking-caption mt-3 max-w-xl text-sm font-bold leading-6 text-white/76">
-                    Responds to the hiring team's question with calm, role-relevant clarity.
-                  </p>
+
+                <div className="relative min-h-[124px] overflow-hidden rounded-[1.35rem] border border-viz-100 bg-white px-5 py-5 shadow-[0_18px_55px_rgba(34,21,84,0.07)]">
+                  <p className="text-[10px] font-black uppercase tracking-[0.22em] text-viz-600">What changes for recruiters</p>
+                  <div className="relative mt-4 min-h-[54px]">
+                    {[
+                      "Resumes explain experience. Communication reveals alignment.",
+                      "The strongest candidates become clearer before you spend interview time.",
+                      "You are not guessing anymore. You are seeing how they show up."
+                    ].map((message, index) => (
+                      <p
+                        key={message}
+                        className="employer-proof-message absolute inset-x-0 top-0 text-balance text-xl font-black leading-tight text-ink sm:text-2xl"
+                        style={{ "--employer-proof-delay": `${index * 4.5}s` } as React.CSSProperties}
+                      >
+                        {message}
+                      </p>
+                    ))}
+                  </div>
+                  <div className="mt-3 h-1 overflow-hidden rounded-full bg-viz-50">
+                    <span className="employer-proof-progress block h-full rounded-full bg-viz-500/70" />
+                  </div>
                 </div>
               </div>
 
               <div className="rounded-[1.5rem] bg-white p-5 shadow-soft">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">What you notice</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-600">Candidate context</p>
+                <h3 className="mt-4 text-3xl font-black leading-tight text-ink">{candidates[1].name}</h3>
+                <p className="mt-2 text-sm font-black text-slate-500">{candidates[1].title} · {candidates[1].location}</p>
+                <p className="mt-5 text-sm font-bold leading-6 text-slate-600">{candidates[1].summary}</p>
+
                 <div className="mt-5 space-y-3">
-                  {[
-                    "Clear communicator",
-                    "Explains ideas calmly",
-                    "Feels prepared",
-                    "Strong team presence",
-                    "Worth moving forward"
-                  ].map((observation) => (
-                    <div key={observation} className="flex items-center gap-3 rounded-2xl bg-viz-50/70 px-4 py-3 text-sm font-black text-ink">
-                      <span className="h-2 w-2 rounded-full bg-viz-600" />
-                      {observation}
+                  {candidates[1].experienceTimeline.slice(0, 2).map((item) => (
+                    <div key={`${item.role}-${item.company}`} className="rounded-2xl bg-viz-50/70 p-4">
+                      <p className="text-sm font-black leading-5 text-ink">{item.role}</p>
+                      <p className="mt-1 text-xs font-bold text-slate-500">{item.company} · {item.duration}</p>
                     </div>
                   ))}
                 </div>
-                <p className="mt-5 text-sm font-bold leading-6 text-slate-600">
-                  Resumes explain experience. Presence reveals alignment.
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {["Clear communicator", "Prepared", "Role-relevant"].map((signal) => (
+                    <span key={signal} className="rounded-full bg-white px-3 py-2 text-[11px] font-black text-viz-700 ring-1 ring-viz-100">
+                      {signal}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="mt-5 border-t border-viz-100 pt-5 text-sm font-black leading-6 text-ink">
+                  Worth moving forward before the first interview.
                 </p>
               </div>
             </div>

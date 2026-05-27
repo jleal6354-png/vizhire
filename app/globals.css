@@ -369,6 +369,18 @@ a svg {
   transform-origin: left center;
 }
 
+.employer-proof-message {
+  animation: cinematicMessage 13.5s ease-in-out infinite;
+  animation-delay: var(--employer-proof-delay);
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.employer-proof-progress {
+  animation: cinematicProgress 13.5s linear infinite;
+  transform-origin: left center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-viz-preview,
   .animate-viz-speaking,
@@ -379,11 +391,14 @@ a svg {
   .speaking-bar,
   .talking-caption,
   .cinematic-message,
-  .cinematic-progress {
+  .cinematic-progress,
+  .employer-proof-message,
+  .employer-proof-progress {
     animation: none;
   }
 
-  .cinematic-message:last-child {
+  .cinematic-message:last-child,
+  .employer-proof-message:last-child {
     opacity: 1;
     transform: none;
     filter: none;
