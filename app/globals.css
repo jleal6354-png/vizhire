@@ -238,6 +238,57 @@ a svg {
   transform-origin: center 34%;
 }
 
+@keyframes heroHuman {
+  0%,
+  100% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+    filter: saturate(1.03);
+  }
+
+  22% {
+    transform: scale(1.092) translate3d(1px, -2px, 0);
+    filter: saturate(1.05);
+  }
+
+  45% {
+    transform: scale(1.1) translate3d(-1px, -3px, 0);
+    filter: saturate(1.06);
+  }
+
+  68% {
+    transform: scale(1.088) translate3d(1px, -1px, 0);
+  }
+}
+
+.animate-hero-human {
+  animation: heroHuman 9.5s ease-in-out infinite;
+  transform-origin: center 36%;
+  will-change: transform, filter;
+}
+
+@keyframes humanPresence {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  42% {
+    opacity: 0.34;
+    transform: translate3d(1px, -1px, 0) scale(1.012);
+  }
+
+  62% {
+    opacity: 0.18;
+    transform: translate3d(0, 1px, 0) scale(1.006);
+  }
+}
+
+.animate-human-presence {
+  animation: humanPresence 6.4s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
 @keyframes speakingBar {
   0%,
   100% {
@@ -322,6 +373,8 @@ a svg {
   .animate-viz-preview,
   .animate-viz-speaking,
   .animate-viz-human,
+  .animate-hero-human,
+  .animate-human-presence,
   .animate-speaking-dot,
   .speaking-bar,
   .talking-caption,

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CheckCircle2, Link2, ShieldCheck, Star, Video } from "lucide-react";
+import { CheckCircle2, Link2, ShieldCheck, Star } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { IndustryUnderstandingSection } from "@/components/industry-understanding-section";
 import { ButtonLink, CandidateCard, TrustPill } from "@/components/ui";
@@ -10,7 +10,8 @@ export default function LandingPage() {
     name: "Emily Carter",
     title: "Customer Experience Manager",
     location: "Nashville, TN",
-    video: "/images/interview-intro-emily.png"
+    poster: "/images/interview-intro-emily.png",
+    responseVideo: "/videos/role-specific-response.mov"
   };
 
   return (
@@ -43,7 +44,10 @@ export default function LandingPage() {
               Hiring should feel <span className="text-viz-600">human</span> again.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-              VizHire helps employers understand confidence, communication, professionalism, and fit before the first interview while giving candidates a better way to be seen beyond keywords and resumes.
+              Resumes show experience. VizHire shows how people communicate, present themselves, and build trust
+              <span className="mt-2 block text-xl font-black leading-8 text-ink sm:text-2xl">
+                before the first interview.
+              </span>
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/signup">Get started free</ButtonLink>
@@ -52,76 +56,65 @@ export default function LandingPage() {
           </div>
 
           <div className="relative">
-            <div className="grid items-stretch gap-4 sm:grid-cols-[0.68fr_1.32fr]">
-              <div className="flex min-h-[310px] flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_20px_60px_rgba(15,23,42,0.06)] grayscale">
-                <div className="mb-3 flex items-center justify-between border-b border-slate-200 pb-2">
-                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Resume.pdf</span>
-                  <span className="h-2 w-10 rounded-full bg-slate-200" />
-                </div>
-                <div className="border-b border-slate-200 pb-3">
-                  <div>
-                    <h2 className="text-xl font-black leading-none text-slate-800">Emily Carter</h2>
-                    <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Customer Experience Manager</p>
+            <div className="rounded-[1.55rem] border border-viz-100/80 bg-white/54 p-1.5 shadow-[0_30px_100px_rgba(34,21,84,0.13)] backdrop-blur">
+              <div className="overflow-hidden rounded-[1.25rem] border border-slate-200/80 bg-slate-950">
+                <div className="flex items-center justify-between border-b border-white/10 bg-white px-2.5 py-1">
+                  <div className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+                  </div>
+                  <div className="hidden rounded-full bg-slate-100 px-2 py-0.5 text-[7px] font-black uppercase tracking-[0.14em] text-slate-400 sm:block">
+                    Employer review
                   </div>
                 </div>
 
-                <div className="mt-3 flex-1 space-y-3 text-slate-600">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Summary</p>
-                    <p className="mt-2 text-[11px] leading-5 text-slate-500">Customer experience leader focused on service training, communication, and retention.</p>
+                <div className="grid bg-[radial-gradient(circle_at_82%_0%,rgba(109,59,255,0.14),transparent_28%),linear-gradient(135deg,#080914,#18112f)] p-1.5 sm:grid-cols-[1fr_132px] xl:grid-cols-[1fr_132px]">
+                  <div className="relative h-[342px] overflow-hidden rounded-[1rem] bg-midnight sm:h-[430px]">
+                    <video
+                      aria-label={`${comparisonCandidate.name} answering a role-specific employer question`}
+                      autoPlay
+                      className="h-full w-full object-cover object-[50%_42%]"
+                      loop
+                      muted
+                      playsInline
+                      poster={comparisonCandidate.poster}
+                    >
+                      <source src={comparisonCandidate.responseVideo} />
+                    </video>
+                    <div className="animate-human-presence absolute inset-0 bg-[radial-gradient(circle_at_48%_36%,rgba(255,255,255,0.12),transparent_20%)] mix-blend-screen" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/0 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-transparent to-black/6" />
+                    <div className="absolute left-3 top-3 flex items-center gap-2 rounded-full bg-black/28 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.16em] text-white/92 backdrop-blur">
+                      <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
+                      Role-specific response
+                    </div>
+                    <div className="absolute left-3 right-3 top-12 h-0.5 overflow-hidden rounded-full bg-white/14">
+                      <span className="cinematic-progress block h-full rounded-full bg-white/70" />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <p className="talking-caption max-w-md text-sm font-bold leading-5 text-white/86">
+                        “For this role, I would focus on helping customers feel heard, supported, and confident in the next step.”
+                      </p>
+                      <h2 className="mt-3 text-2xl font-black leading-none">{comparisonCandidate.name}</h2>
+                      <p className="mt-1.5 text-xs font-bold text-white/78">{comparisonCandidate.title} · {comparisonCandidate.location}</p>
+                    </div>
                   </div>
 
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Experience</p>
-                    <div className="mt-2 space-y-2.5">
-                      {[
-                        ["Customer Experience Manager", "Brightway Home · 2021-Present"],
-                        ["Client Success Lead", "Harbor Services · 2019-2021"]
-                      ].map(([role, meta]) => (
-                        <div key={role}>
-                          <div className="flex items-start justify-between gap-3">
-                            <p className="text-sm font-black text-slate-700">{role}</p>
-                            <p className="shrink-0 text-[10px] font-bold text-slate-400">{meta.split(" · ")[1]}</p>
-                          </div>
-                          <p className="mt-0.5 text-[11px] font-bold text-slate-400">{meta.split(" · ")[0]}</p>
-                          <p className="mt-1.5 text-[11px] leading-4 text-slate-500">Led coaching, retention reviews, and customer communication improvements.</p>
+                  <div className="mt-1.5 rounded-[1rem] border border-white/10 bg-white/[0.045] p-2.5 text-white sm:ml-1.5 sm:mt-0">
+                    <p className="text-[8px] font-black uppercase tracking-[0.18em] text-viz-100">Hiring notes</p>
+                    <h3 className="mt-2 text-[13px] font-black leading-tight">Already clearer than a resume.</h3>
+                    <div className="mt-3 space-y-2">
+                      {["Answers clearly", "Understands the role", "Worth reviewing"].map((signal) => (
+                        <div key={signal} className="flex items-center gap-1.5 border-b border-white/10 pb-2 text-[11px] font-black text-white/86 last:border-b-0 last:pb-0">
+                          <CheckCircle2 className="h-3 w-3 shrink-0 text-emerald-300" />
+                          {signal}
                         </div>
                       ))}
                     </div>
-                  </div>
-
-                  <div className="border-t border-slate-100 pt-3">
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Skills</p>
-                      <p className="mt-2 text-[11px] leading-5 text-slate-500">Communication, Coaching, Retention, Training</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-3 border-t border-slate-100 pt-3">
-                  <p className="text-sm font-black leading-5 text-slate-700">Information without human understanding.</p>
-                </div>
-              </div>
-
-              <div className="glass min-h-[310px] rounded-3xl p-3 ring-1 ring-viz-200">
-                <div className="relative h-full min-h-[286px] overflow-hidden rounded-[1.55rem] bg-midnight">
-                  <img src={comparisonCandidate.video} alt={`${comparisonCandidate.name} VizHire video preview`} className="animate-viz-human h-full w-full object-cover object-center" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent" />
-                  <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/28 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
-                    <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
-                    Intro in progress
-                  </div>
-                  <div className="absolute bottom-20 left-4 right-4">
-                    <p className="talking-caption max-w-md rounded-2xl bg-black/24 px-4 py-3 text-sm font-bold leading-6 text-white/86 backdrop-blur">
-                      “I help customers feel heard, supported, and confident in the next step.”
+                    <p className="mt-3 text-[10px] font-bold leading-4 text-white/54">
+                      Role-specific response reviewed with experience and references.
                     </p>
-                  </div>
-                  <div className="absolute left-4 right-4 top-16 h-1 overflow-hidden rounded-full bg-white/16">
-                    <span className="cinematic-progress block h-full rounded-full bg-white/70" />
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h2 className="mt-1 text-2xl font-black sm:text-3xl">{comparisonCandidate.name}</h2>
-                    <p className="mt-1 text-sm font-bold text-white/82">{comparisonCandidate.title} · {comparisonCandidate.location}</p>
                   </div>
                 </div>
               </div>
@@ -146,7 +139,7 @@ export default function LandingPage() {
             {[
               [
                 "See communication earlier",
-                "Short video introductions help employers evaluate professionalism, confidence, and communication before interviews."
+                "Role-specific video responses help employers evaluate professionalism, confidence, and communication before interviews."
               ],
               [
                 "Reduce hiring guesswork",
@@ -205,18 +198,15 @@ export default function LandingPage() {
 
             <div className="rounded-[1.75rem] border border-white/16 bg-white/10 p-3 shadow-[0_28px_90px_rgba(5,8,22,0.34)] backdrop-blur">
               <div className="vh-candidate-media vh-candidate-media-balanced h-[290px] rounded-[1.35rem] sm:h-[360px]" style={{ "--candidate-image": `url(${candidates[0].video})` } as React.CSSProperties}>
-                <img src={candidates[0].video} alt={`${candidates[0].name} professional intro preview`} className="animate-viz-preview" />
+                <img src={candidates[0].video} alt={`${candidates[0].name} role-specific response preview`} className="animate-viz-preview" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/84 via-black/16 to-transparent" />
                 <div className="absolute left-4 top-4 rounded-full bg-white/14 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-white backdrop-blur">
-                  30-sec intro
+                  Role-specific response
                 </div>
-                <Link href="/sample-profile" className="absolute inset-0 m-auto grid h-14 w-14 place-items-center rounded-full bg-white text-viz-700 shadow-soft transition hover:scale-105" aria-label="Open VizHire sample profile">
-                  <Video className="h-6 w-6" />
-                </Link>
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-200">Human signal preview</p>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-viz-200">Employer question response</p>
                   <h3 className="mt-2 text-3xl font-black">{candidates[0].name}</h3>
-                  <p className="mt-2 text-sm font-bold text-white/78">Clear, confident, and professionally present.</p>
+                  <p className="mt-2 text-sm font-bold text-white/78">Clear, confident, and relevant to the role.</p>
                 </div>
               </div>
             </div>
@@ -240,11 +230,11 @@ export default function LandingPage() {
           <div className="glass rounded-[2rem] p-3 sm:p-4">
             <div className="grid gap-4 lg:grid-cols-[1fr_0.38fr]">
               <div className="vh-candidate-media vh-candidate-media-balanced h-[300px] rounded-[1.5rem] sm:h-[360px] lg:h-[390px]" style={{ "--candidate-image": `url(${candidates[1].video})` } as React.CSSProperties}>
-                <img src={candidates[1].video} alt={`${candidates[1].name} professional intro preview`} className="animate-viz-speaking" />
+                <img src={candidates[1].video} alt={`${candidates[1].name} answering a hiring team question`} className="animate-viz-speaking" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/10 to-transparent" />
                 <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/24 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white backdrop-blur">
                   <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_18px_rgba(110,231,183,0.9)] animate-speaking-dot" />
-                  Intro in progress
+                  Response in progress
                 </div>
                 <div className="absolute bottom-24 left-5 flex items-end gap-1.5 text-white/78">
                   {[0, 1, 2, 3, 4].map((bar) => (
@@ -256,7 +246,7 @@ export default function LandingPage() {
                   <h3 className="mt-2 text-3xl font-black">{candidates[1].name}</h3>
                   <p className="mt-1 text-sm font-bold text-white/82">{candidates[1].title} · {candidates[1].location}</p>
                   <p className="talking-caption mt-3 max-w-xl text-sm font-bold leading-6 text-white/76">
-                    Calmly explains revenue patterns and makes complex tradeoffs easy to follow.
+                    Responds to the hiring team's question with calm, role-relevant clarity.
                   </p>
                 </div>
               </div>
