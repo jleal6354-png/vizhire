@@ -10,7 +10,6 @@ export default function LandingPage() {
     name: "Emily Carter",
     title: "Customer Experience Manager",
     location: "Nashville, TN",
-    poster: "/images/interview-intro-emily.png",
     responseVideo: "/videos/role-specific-response.mov"
   };
 
@@ -79,7 +78,6 @@ export default function LandingPage() {
                       muted
                       playsInline
                       preload="auto"
-                      poster={comparisonCandidate.poster}
                     >
                       <source src={comparisonCandidate.responseVideo} />
                     </video>
@@ -123,6 +121,8 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      <IndustryUnderstandingSection />
 
       <section id="platform" className="px-4 py-20">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-viz-100 bg-[radial-gradient(circle_at_50%_0%,rgba(109,59,255,0.13),transparent_34%),linear-gradient(180deg,#ffffff,#fbfaff)] px-5 py-12 shadow-soft sm:px-10 sm:py-16 lg:px-14">
@@ -205,7 +205,6 @@ export default function LandingPage() {
                   muted
                   playsInline
                   preload="auto"
-                  poster={candidates[0].video}
                 >
                   <source src="/videos/black-professional-girl.mov" />
                 </video>
@@ -251,7 +250,6 @@ export default function LandingPage() {
                     muted
                     playsInline
                     preload="auto"
-                    poster={candidates[1].video}
                   >
                     <source src="/videos/employer-question-response.mp4" type="video/mp4" />
                   </video>
@@ -328,8 +326,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      <IndustryUnderstandingSection />
 
       <section className="relative overflow-hidden bg-[linear-gradient(180deg,#100532_0%,#f7f1ff_28%,#ffffff_100%)] px-4 py-20">
         <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_70%_0%,rgba(134,92,255,0.45),transparent_34%)]" />
